@@ -348,7 +348,7 @@
                             <h4>Task 7 - Temperature Array</h4>
                             <p>Task 7 was quite similar to the previous task. This time two arrays were created, one to store the time and one for the equivalent temperature from the sensor onboard. These arrays should match in size and can be mapped to the timestamps. It can be seen that when both were sent to the compute using the notification handler both have the same size of 250. </p>
                             <h4>Task 8 - Discussion</h4>
-                            <p> </p>
+                            <p>These two methods both have advantages and disadvantages so we might need to chose either one depending on the scenario. By storing all values in an array before sending in a batch, it ensures a faster transmission speed and a higher effective transmission rate but there is a risk of the board running out of RAM. Since it only has 384kB of RAM, it is risky to be storing too many values in an array which may lead to a potential overflow. By choosing the second method to send data in real-time, it uses less RAM, therefore, elimiating the risk of causing memory overflow. There will not be much delay between collection and transmission time like the other method. However, if the data is collected too fast, the BLE might not be able to keep up which may lead to packet drops as shown in the previous tasks. There is also a higher risk of data loss since they are being sent one by one.</p>
                             <h4>5000 Task</h4>
                             <p> </p>
                                 
