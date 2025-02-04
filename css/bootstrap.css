@@ -1371,8 +1371,10 @@ pre {
   background-color: #ecf0f1;
   border: 1px solid #cccccc;
   border-radius: 4px;
+  text-align: left !important;
 }
 pre code {
+  text-align: left !important;
   padding: 0;
   font-size: inherit;
   color: inherit;
