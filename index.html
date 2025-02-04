@@ -347,6 +347,7 @@
                             <h4>Task 2 - SEND_THREE_FLOATS</h4>
                             <p>For task 2, a new cmd needed to be created so it was first added onto the list in cmd_type and also on the arduino program. Adding a new cmd means a new case is being created. The SEND_THREE_FLOATS was quite similar to the SEND_TWO_INTS with the only difference being the data type being sent. The arduino needed to extract the float numbers being separated by "|".</p>
                             <img src="img/1b_Task2_1.png" class="img-responsive img-centered" alt="">
+                            <img src="img/Three_float.png" class="img-responsive img-centered" alt="">
                             <h4>Task 3 - GET_TIME_MILLIS</h4>
                             <p>Task 3 required us to add an additional cmd that would output the time by using the onboard timer function milis() then send it over bluetooth to the laptop. By appending the tx_estring_value like I did for the previous tasks. </p>
                             <pre><code class="language-cpp">
@@ -358,18 +359,22 @@
                                 tx_characteristic_string.writeValue(tx_estring_value.c_str());
                             </code></pre>
                             <img src="img/1b_Task3.png" class="img-responsive img-centered" alt="">
+                            <img src="img/get_time_millis.png" class="img-responsive img-centered" alt="">
                             <h4>Task 4 - Notification handler</h4>
                             <p>In continuation of task 3, In the next task a notification handler was setup in python to extract the time whenever a string characteristic is received. In order to extract the time, ble.bytearray_to_string is used to turn the byte array into a string and split it after "T:". the value after the split is stored and sent back to the computer. </p>
                             <img src="img/1b_Task4.png" class="img-responsive img-centered" alt="">
                             <h4>Task 5 - Loop</h4>
                             <p>In the next task, a new command was created called LOOP to send the time in a loop to observe the effective data transfer rate. Here 7 bytes were transferred per message for 5 seconds. On average there were around 35 messages per second. That means the effective transfer rate is 245 Bps</p>
                             <img src="img/1b_Task5.png" class="img-responsive img-centered" alt="">
+                            <img src="img/loop.png" class="img-responsive img-centered" alt="">
                             <h4>Task 6 - Time Array</h4>
                             <p>This task was to store all the time values in an array by first creating a new command, SEND_TIME_DATA. This command should fill the array until it is full and make sure it does not go beyond the array size. Then the array of time is sent to the computer and stored in a list using the notification handler. It can be seen that the list has a length of 250 which is the set size of the array. It seems like the transfer rate has increased drastially when stored in an array and sent.</p>
                             <img src="img/1b_task6.png" class="img-responsive img-centered" alt="">
+                            <img src="img/send_time_data.png" class="img-responsive img-centered" alt="">
                             <h4>Task 7 - Temperature Array</h4>
                             <p>Task 7 was quite similar to the previous task. This time two arrays were created, one to store the time and one for the equivalent temperature from the sensor onboard. These arrays should match in size and can be mapped to the timestamps. It can be seen that when both were sent to the compute using the notification handler both have the same size of 250. </p>
                             <img src="img/1b_Task7.png" class="img-responsive img-centered" alt="">
+                            <img src="img/send_temp_data.png" class="img-responsive img-centered" alt="">
                             <h4>Task 8 - Discussion</h4>
                             <p>These two methods both have advantages and disadvantages so we might need to chose either one depending on the scenario. By storing all values in an array before sending in a batch, it ensures a faster transmission speed and a higher effective transmission rate but there is a risk of the board running out of RAM. Since it only has 384kB of RAM, it is risky to be storing too many values in an array which may lead to a potential overflow. By choosing the second method to send data in real-time, it uses less RAM, therefore, elimiating the risk of causing memory overflow. There will not be much delay between collection and transmission time like the other method. However, if the data is collected too fast, the BLE might not be able to keep up which may lead to packet drops as shown in the previous tasks. There is also a higher risk of data loss since they are being sent one by one.</p>
                             <h4>5000 Task</h4>
