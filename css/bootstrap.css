@@ -5544,6 +5544,10 @@ button.close {
   padding: 20px;
   text-align: left;
 }
+.modal-body h4 {
+    text-align: left;
+    display: block;
+}
 .modal-footer {
   padding: 20px;
   text-align: right;
