@@ -327,7 +327,7 @@
                             <h4>Task 1 - ECHO</h4>
                             <p>For the first task, ECHO, the command was for the Artemis to send a string message to the laptop. A message "HiHello" was sent to the arduino and it should reply back with "Robot says -> HiHello". For the rest of this lab, arguments will be passed by triggering different cases. By using robot_cmd.get_next_value(), it is able to extract each character from the string. The results are displayed both on the serial monitor (Artemis board) and on jupyter lab (laptop).</p>
                             <h4>Task 2 - SEND_THREE_FLOATS</h4>
-                            <p> </p>
+                            <p>For task 2, a new cmd needed to be created so it was first added onto the list in cmd_type and also on the arduino program. Adding a new cmd means a new case is being created. The SEND_THREE_FLOATS was quite similar to the SEND_TWO_INTS with the only difference being the data type being sent. The arduino needed to extract the float numbers being separated by "|"</p>
                             <h4>Task 3 - GET_TIME_MILLIS</h4>
                             <p> </p>
                             <h4>Task 4 - Notification handler</h4>
