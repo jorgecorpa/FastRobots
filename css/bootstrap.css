@@ -5541,7 +5541,6 @@ button.close {
   line-height: 1.42857143;
 }
 .modal-body {
-  position: relative;
   padding: 20px;
   text-align: left;
 }
