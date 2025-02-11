@@ -453,6 +453,8 @@
                                 <img src="img/Lab2/gyro_accelerometer_pitch.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
                                 <img src="img/Lab2/gyro_accelerometer_roll.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
                             </div>
+                            <p>The gyro values were calculated with the help of the equations mentioned in the lecture slides and the code example. The values of the pitch and roll for gyro were the wrong way due to the difference in reference axis between the gyro and accelerometer. After flipping the pitch and roll, the gyro_roll gave an inverted result when compared to the accelerometer roll, therefore, a negative sign was assigned rather than positive as shown in the example. I am not entirely sure what could have caused the inverted gyro_roll values.</p>
+                            <img src="img/Lab2/gyro_code.png" class="img-responsive img-centered" alt="">    
                             <h3>Lab 1B</h3>
                             <h4>Pre Lab</h4>
                             <p>For the second part of the lab, the pre lab was mostly downloading and verifying that the correct python, pip, and jupyter lab versions are correct and compatible. The codebase was provided in the lab instructions and told how to install the ArduinoBLE library. The very first step was to identify the MAC address and generate a new UUID for the board to avoid connecting to other people's board during the designated lab session. These values were then placed in their respective placed both in the arduino program and the jupyter lab (connection.yaml)</p>
