@@ -404,23 +404,89 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Project Title</h2>
-                            <hr class="star-primary">
-                            <img src="img/portfolio/cake.png" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                    <div class="col-lg-12">
+                            <h2>Lab1</h2>
+
+                            <p>Lab 1 was split into two main sections, the configuration of the Artemis board and programming the connevtivity between the laptop and the Arthemis board via Bluetooth. As part of Lab 1A, we went through simple builtin examples to examine the funcationalities of the Arthemis board and finished off by programming the board to recognize the musical "C" note. In Lab 1B, after setting up the environment such as installing the right python and jupyter lab versions, a total of 8 Tasks not including the extra 5000 level task were completed step by step.</p>
                             <ul class="list-inline item-details">
-                                <li>Client:
-                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
-                                    </strong>
-                                </li>
+                            <h3>Lab 1A</h3>
+                            <h4>Pre Lab</h4>
+                            <p>Since I used a windows laptop to complete the labs, it was relatively straight forward to setup the Arduino IDE and install the Sparkfun Apollo3 Arduino Core from the official sparkfun website by using the json file method. </p>
+                            <h4>Task 1</h4>
+                            <p>Task 1 was simply connecting the Arthemis board to the laptop which was easy enough without encountering any issues after identifying and selecting the correct port and board from board manager.</p>
+                            <h4>Task 2</h4>
+                            <p>In Task 2, the built-in blink example was ran and tested. The program was compiled and uploaded onto the board.</p>   
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/blink_video.mp4" type="video/mp4">
+                                </video> 
+                            </div>
+                            <h4>Task 3</h4>
+                            <p>In Task 3, the example code Example4_Serial from Apollo3 was compiled and uploaded onto the board to demonstrate that the serial monitor is functional. Keep in mind the the serial monitor's baud rate had to be set to the same value as shown in the code or else it is not able to recognize the characters.</p>
+                            <img src="img/1a_Task_2.jpg" class="img-responsive img-centered" alt="">
+                            <h4>Task 4</h4>
+                            <p>Then, the example code Example2_analogRead was uploaded to test the onboard temperature sensor. By placing a bit of pressure on the sensor, the counts would slowly increase demonstrating that the temperature was increasing. There is a shield on top of the sensor so it was not very accurate.</p>
+                            <img src="img/1a_Task4.jpg" class="img-responsive img-centered" alt="">
+                            <h4>Task 5</h4>
+                            <p>In Task 5, in order to test the microphone on the board, the example PDM was ran. The video shows that the values increase as the frequency of the environment sound increases as well. </p>
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/1a_Task5.mp4" type="video/mp4">
+                                </video> 
+                            </div>
+                            <h4>5000 Task</h4>
+                            <p>The additional task for 5000 level students was to blink the LED on the board when the microphone picks up a musical "C" note. As there are many "C" notes, different ranges were set for the microphone to pick up and flash the LED. The ranges are: 1. 250 ~ 266 2. 520 ~ 530 3. 125~135 4. 60~70 5. 1040~1050 </p>
+                            <img src="img/1a_Task5.png" class="img-responsive img-centered" alt="">
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/1a_5000Level.mp4" type="video/mp4">
+                                </video> 
+                            </div>
+                            <h3>Lab 1B</h3>
+                            <h4>Pre Lab</h4>
+                            <p>For the second part of the lab, the pre lab was mostly downloading and verifying that the correct python, pip, and jupyter lab versions are correct and compatible. The codebase was provided in the lab instructions and told how to install the ArduinoBLE library. The very first step was to identify the MAC address and generate a new UUID for the board to avoid connecting to other people's board during the designated lab session. These values were then placed in their respective placed both in the arduino program and the jupyter lab (connection.yaml)</p>
+                            <h4>Task 1 - ECHO</h4>
+                            <p>For the first task, ECHO, the command was for the Artemis to send a string message to the laptop. A message "HiHello" was sent to the arduino and it should reply back with "Robot says -> HiHello". For the rest of this lab, arguments will be passed by triggering different cases. By using robot_cmd.get_next_value(), it is able to extract each character from the string. The results are displayed both on the serial monitor (Artemis board) and on jupyter lab (laptop).</p>
+                            <img src="img/1b_Task1.png" class="img-responsive img-centered" alt="">
+                            <h4>Task 2 - SEND_THREE_FLOATS</h4>
+                            <p>For task 2, a new cmd needed to be created so it was first added onto the list in cmd_type and also on the arduino program. Adding a new cmd means a new case is being created. The SEND_THREE_FLOATS was quite similar to the SEND_TWO_INTS with the only difference being the data type being sent. The arduino needed to extract the float numbers being separated by "|".</p>
+                            <img src="img/1b_Task2_1.png" class="img-responsive img-centered" alt="">
+                            <img src="img/Three_float.png" class="img-responsive img-centered" alt="">
+                            <h4>Task 3 - GET_TIME_MILLIS</h4>
+                            <p>Task 3 required us to add an additional cmd that would output the time by using the onboard timer function milis() then send it over bluetooth to the laptop. By appending the tx_estring_value like I did for the previous tasks. </p>
+                            <pre><code class="language-cpp">
+                                int time;
+                                time = millis();
+                                tx_estring_value.clear();
+                                tx_estring_value.append("T:");
+                                tx_estring_value.append(time);
+                                tx_characteristic_string.writeValue(tx_estring_value.c_str());
+                            </code></pre>
+                            <img src="img/1b_Task3.png" class="img-responsive img-centered" alt="">
+                            <h4>Task 4 - Notification handler</h4>
+                            <p>In continuation of task 3, In the next task a notification handler was setup in python to extract the time whenever a string characteristic is received. In order to extract the time, ble.bytearray_to_string is used to turn the byte array into a string and split it after "T:". the value after the split is stored and sent back to the computer. </p>
+                            <img src="img/1b_Task4.png" class="img-responsive img-centered" alt="">
+                            <h4>Task 5 - Loop</h4>
+                            <p>In the next task, a new command was created called LOOP to send the time in a loop to observe the effective data transfer rate. Here 7 bytes were transferred per message for 5 seconds. On average there were around 35 messages per second. That means the effective transfer rate is 245 Bps</p>
+                            <img src="img/1b_Task5.png" class="img-responsive img-centered" alt="">
+                            <img src="img/loop.png" class="img-responsive img-centered" alt="">
+                            <h4>Task 6 - Time Array</h4>
+                            <p>This task was to store all the time values in an array by first creating a new command, SEND_TIME_DATA. This command should fill the array until it is full and make sure it does not go beyond the array size. Then the array of time is sent to the computer and stored in a list using the notification handler. It can be seen that the list has a length of 250 which is the set size of the array. It seems like the transfer rate has increased drastially when stored in an array and sent.</p>
+                            <img src="img/1b_task6.png" class="img-responsive img-centered" alt="">
+                            <img src="img/send_time_data.png" class="img-responsive img-centered" alt="">
+                            <h4>Task 7 - Temperature Array</h4>
+                            <p>Task 7 was quite similar to the previous task. This time two arrays were created, one to store the time and one for the equivalent temperature from the sensor onboard. These arrays should match in size and can be mapped to the timestamps. It can be seen that when both were sent to the compute using the notification handler both have the same size of 250. </p>
+                            <img src="img/1b_Task7.png" class="img-responsive img-centered" alt="">
+                            <img src="img/send_temp_data.png" class="img-responsive img-centered" alt="">
+                            <h4>Task 8 - Discussion</h4>
+                            <p>These two methods both have advantages and disadvantages so we might need to chose either one depending on the scenario. By storing all values in an array before sending in a batch, it ensures a faster transmission speed and a higher effective transmission rate but there is a risk of the board running out of RAM. Since it only has 384kB of RAM, it is risky to be storing too many values in an array which may lead to a potential overflow. By choosing the second method to send data in real-time, it uses less RAM, therefore, elimiating the risk of causing memory overflow. There will not be much delay between collection and transmission time like the other method. However, if the data is collected too fast, the BLE might not be able to keep up which may lead to packet drops as shown in the previous tasks. There is also a higher risk of data loss since they are being sent one by one.</p>
+                            <h4>5000 Task</h4>
+                            <p>The results show that smaller sized bytes might have more overhead as the BLE setup time dominates transmission, and that results in a lower data rate. As the message size increases, the efficiency improves drastically, peakingat 100 bytes. This confirms that larger messages reduce overhead. </p>
+                            <img src="img/5000Level_1.png" class="img-responsive img-centered" alt="">
+                            <p>In the reliability test, it seems like all the data went through no matter the change of rate however it does become slower causing some delays.</p>
+                            <h4>Discussion</h4>
                                 <li>Date:
                                     <strong><a href="http://startbootstrap.com">April 2014</a>
-                                    </strong>
-                                </li>
-                                <li>Service:
-                                    <strong><a href="http://startbootstrap.com">Web Development</a>
                                     </strong>
                                 </li>
                             </ul>
