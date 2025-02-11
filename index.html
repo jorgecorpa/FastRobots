@@ -412,15 +412,21 @@
                             <p>For the pre-lab, we had to read about the IMU that we would be using in the lab and brush up on the knowledge taught during the lectures (Equations from the slides are going to be used later during the lab).</p>
                             <h4>Task 1 - Setup the IMU</h4>
                             <p>As part of the setup, the  “SparkFun 9DOF IMU Breakout_ICM 20948_Arduino Library” was installed and the simple example was ran to understand the basics of how the accelerometer works. </p>
-                            <h4>Task 2</h4>
+                            <h4>Task 2 - Blink LEDs</h4>
                             <p>A visual indication was added by blinking the LED three times during start-up to indicate that the board is running properly.</p>   
                             <div class = "centered">
                                 <video width="640" height="480" controls>
                                 <source src="./img/Lab2/triple_blink.mp4" type="video/mp4">
                                 </video> 
                             </div>
-                            <h4>Task 3</h4>
-                            <p>In Task 3, the example code Example4_Serial from Apollo3 was compiled and uploaded onto the board to demonstrate that the serial monitor is functional. Keep in mind the the serial monitor's baud rate had to be set to the same value as shown in the code or else it is not able to recognize the characters.</p>
+                            <h3>Accelerometer</h3>
+                            <h4>Task 1 - Pitch & Roll</h4>
+                            <p>In this section, the accelerometer will be analyzed in depth by first converting the data into pitch and roll by using the equations shown in class. Jupyter labs was used to plot the graphs after the data was sent from the Artemis board. the video below demonstrates that the IMU is functional by observing the built-in serial plotter in arduino.</p>
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/Lab2/serial_plot.mp4" type="video/mp4">
+                                </video> 
+                            </div>
                             <img src="img/1a_Task_2.jpg" class="img-responsive img-centered" alt="">
                             <h4>Task 4</h4>
                             <p>Then, the example code Example2_analogRead was uploaded to test the onboard temperature sensor. By placing a bit of pressure on the sensor, the counts would slowly increase demonstrating that the temperature was increasing. There is a shield on top of the sensor so it was not very accurate.</p>
