@@ -521,12 +521,13 @@
                             <img src="img/Lab3/I2C_Address.png" class="img-responsive img-centered" alt="">
                             <p>After testing short, medium (Had to use Polulu version of VL53L1X), and long mode, I have decided to use the short mode. This is because it is the most accurate when in close proximity and that is very important for RC cars going at a high velocity. Despite being short mode it still can detect up to 1.3m in distance which should be enough for the maze track at the end of the semester. The short mode also has a big advantage over the other two, which is that it is faster, and that is crucial in tight space obstacle avoidance. The range of 1.3m was pretty accurate only deviating around 4% from the actual distance, but this depends on the angle of the ToF as it is extrememly sensitive to change in angle. The ranging time was consistently around 4ms proving its speed.</p>
                             <img src="img/Lab3/accuracy.png" class="img-responsive img-centered" alt="">    
-                            <p></p>
+                            <p>In the next section, Both ToFs were wired up to the Artemis board for testing. In order to work with two ToFs at the same time, at least one of the built-in address had to be changed. To realize this, I soldered an extra wire connecting a GPIO pin from the Artemis board to the XSHUT pin of one of the ToFs. The logic behind it is to disable one of the sensors before changing the address of the other. This way, we can assure that both ToFs have different addresses and can be ran simultaneously.</p>
                             <div class = "centered">
                                 <video width="640" height="480" controls>
                                 <source src="./img/Lab2/2TOF.mp4" type="video/mp4">
                                 </video> 
                             </div>
+                            <img src="img/Lab3/2TOF_code.png" class="img-responsive img-centered" alt="">  
                             <h4>Task 1 - Gyroscope Pitch and Roll</h4>
                             <p></p>
                             <div style="display: flex; justify-content: center; align-items: center;">
