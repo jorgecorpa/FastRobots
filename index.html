@@ -491,6 +491,7 @@
             </div>
         </div>
     </div>
+    
     <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
             <div class="close-modal" data-dismiss="modal">
@@ -499,25 +500,85 @@
                     </div>
                 </div>
             </div>
-            <div class="container">
+           <div class="container">
                 <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Project Title</h2>
-                            <hr class="star-primary">
-                            <img src="img/portfolio/circus.png" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                    <div class="col-lg-12">
+                            <h2>Lab2</h2>
+                            <p>Lab 2 contains the reading, filtering, and calibrating the IMU data and signals that is connected to the Artemis nano board. This is the first piece that was connected to the board since starting the labs. After analyzing the IMU data and sending it across from the Artemis board to the laptop, I ran the stunt car for the first time and demonstrated some stunts.</p>
                             <ul class="list-inline item-details">
-                                <li>Client:
-                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
-                                    </strong>
-                                </li>
+                            <h4>Pre Lab</h4>
+                            <p>For the pre-lab, we had to read about the IMU that we would be using in the lab and brush up on the knowledge taught during the lectures (Equations from the slides are going to be used later during the lab).</p>
+                            <h4>Task 1 - Setup the IMU</h4>
+                            <p>As part of the setup, the  “SparkFun 9DOF IMU Breakout_ICM 20948_Arduino Library” was installed and the simple example was ran to understand the basics of how the accelerometer works. </p>
+                            <h4>Task 2 - Blink LEDs</h4>
+                            <p>A visual indication was added by blinking the LED three times during start-up to indicate that the board is running properly.</p>   
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/Lab2/triple_blink.mp4" type="video/mp4">
+                                </video> 
+                            </div>
+                            <h3>Accelerometer</h3>
+                            <h4>Task 1 - Pitch & Roll</h4>
+                            <p>In this section, the accelerometer will be analyzed in depth by first converting the data into pitch and roll by using the equations shown in class. Jupyter labs was used to plot the graphs after the data was sent from the Artemis board. the video below demonstrates that the IMU is functional by observing the built-in serial plotter in arduino.</p>
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/Lab2/serial_plot.mp4" type="video/mp4">
+                                </video> 
+                            </div>
+                            <img src="img/Lab2/equation1.png" class="img-responsive img-centered" alt="">
+                            <p>The data was transmitted to the computer through the serial port at this instance and not BLE but it will later be implemented. The images below demonstrate the output at {-90,0,90} degrees pitch and roll</p>
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <img src="img/Lab2/Task1_Pitch.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
+                                <img src="img/Lab2/Task1_Roll.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
+                            </div>
+                            <h4>Task 2 - Fourier Transform</h4>
+                            <p>To implement the fourier transform for the accelerometer data, the linked website in the lab script was very helpful to find the sample rate and N which ultimately led to finding the cut off frequency after analyzing the graphs. The graphs below show the noisiness of the accelerometer just with gentle taps on the table. From the FFT graph, it can be deduced that the cut-off frequency should be set at around 5Hz. This value was used to later implement the RC lowp-pass filter as taught in class.</p>
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <img src="img/Lab2/pitch_without.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
+                                <img src="img/Lab2/roll_without.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
+                            </div>
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <img src="img/Lab2/pitch_LPF.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
+                                <img src="img/Lab2/Roll_LPF.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
+                            </div>
+                            <img src="img/Lab2/LPF_code.png" class="img-responsive img-centered" alt="">
+                            <p>The code above is the implementation of the low-pass filter derived from the lecture notes. The lower two graphs show the results after applying the lowpass filter. The cut-off frequency was experimented with different values but 5Hz seemed to be the most effective in removing as much noise as possible. The noise reduces drastically after the 5Hz point on both pitch and roll as expected.</p>
+                            <h3>Gyroscope</h3>
+                            <p>In the next section, we moved to analyzing the outputs of the Gyroscope through a series of measurements and adding a complementary filter to integrate both the gyro and accelerometer values together.</p>
+                            <h4>Task 1 - Gyroscope Pitch and Roll</h4>
+                            <p></p>
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <img src="img/Lab2/gyro_accelerometer_pitch.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
+                                <img src="img/Lab2/gyro_accelerometer_roll.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
+                            </div>
+                            <p>The gyro values were calculated with the help of the equations mentioned in the lecture slides and the code example. The values of the pitch and roll for gyro were the wrong way due to the difference in reference axis between the gyro and accelerometer. After flipping the pitch and roll, the gyro_roll gave an inverted result when compared to the accelerometer roll, therefore, a negative sign was assigned rather than positive as shown in the example. I am not entirely sure what could have caused the inverted gyro_roll values. As shown in the graph, the raw, filtered and the gyro_pitch are compared against each other. Gyro values clearly are not the most accurate and has drift. A common observation when tweaking with the values is that the gyroscope may start deviating and end up in completely differnt end points than the accelerometer values.</p>
+                            <img src="img/Lab2/gyro_code.png" class="img-responsive img-centered" alt="">    
+                            <h4>Task 2 - Complimentary filter</h4>
+                            <p>The complimentary filter integrates both the accelerometer and the gyroscope values with the tuning of the alpha value. This reduces the drift from the gyroscope and filters out noise from the accelerometer data. The roll graph is a perfect example where the gyroscope values are deviated and contains drift, and the accelerometer values are quite noisy but the complimentary filter is smoother.</p>
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <img src="img/Lab2/compli_pitch.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
+                                <img src="img/Lab2/compli_roll.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
+                            </div>
+                            <img src="img/Lab2/compli_code.png" class="img-responsive img-centered" alt="">
+                            <h3>Sampling Data</h3>
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <img src="img/Lab2/main.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
+                                <img src="img/Lab2/send_imu.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
+                            </div>
+                            <p>For this part, I created two cases, one to start gathering data and one to send the data back to the computer. The start case is not shown beceause it is just a toggle that triggers a loop within the main loop. On the left, this snippet is part of the main loop when the data for pitch, roll, and gyro values are stored in their individual arrays for better management. The code on the right shows how the arrays are being sent back to the computer. A small delay was added to prevent an overflow, which might affect the optimization of the system. After the data is received on the computer, I could see the amount of data and the time it took to transmit the data. The average time interval between each sample was 2.79ms which is equivalent to 358Hz. By increasing the size of the array to at least 1800, it would be able to store 5 seconds worth of data as shown below. By assigning a size of 2000 for each array and each of the samples being float means that the total memory needed is 2000 x 24 = 48000 bytes = 48 KB. There should be more than enough memory since the Artemis has almost 400KB of RAM. Although assigning it as float means it requires more memory but it allows for more precise values which are needed for FFT and filters. However, the timestamps were set as integers. The image below shows that it is able to store more than 7 seconds worth of data.</p>
+                            <img src="img/Lab2/time.png" class="img-responsive img-centered" alt="">
+                            <h3>Stunt!</h3>
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/Lab2/stunt.mp4" type="video/mp4">
+                                </video> 
+                            </div>
+                            <h4>Discussion</h4>
+                            <p>In this lab, I gained a lot more practice on plotting different graphs to analyze the IMU and how to use raw data and convert them into differnt values such as gyroscope, accelerometer. These were then used to evaluate the performance of the system and how to optimize it. I am still not sure about the directional differences within the gyroscope.</p>
+                            <h3>Reference</h3>
+                            <p>To complete this weeks lab, I consulted with Aidan Derocher and referred to the websites of Nila Narayan and Miguel Alvarez for some inspirations on how to complete the tasks.</p>
                                 <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
-                                    </strong>
-                                </li>
-                                <li>Service:
-                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    <strong><a>Feb 2025</a>
                                     </strong>
                                 </li>
                             </ul>
