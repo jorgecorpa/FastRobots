@@ -509,18 +509,19 @@
                             <h4>Pre Lab</h4>
                             <p>For the pre-lab, we had to read about the Time of Flight sendsors and take note of the I2C address because it would be used later on when dealing with 2 ToFs. We also had to think about the wiring and the placement of the compoenents that would end up going onto the RC car later on.</p>
                             <h3>Soldering</h3>
-                            <h4>Task 1 - Battery</h4>
+                            <h4>Battery</h4>
                             <p>In this section, we cut some of the JST connectors and soldered them together with the 750mAh battery to power the Artemis nano board. Later on, the board should be fully functional without having to connect it to the computer. We had to cut the ends off, slide heat shrinks on and solder them all together. The image below shows the board connecting to Bluetooth without connecting to the computer through a USB. I was able to transmit data and display it on the computer.</p>
                             <div>
                                 <img src="img/Lab3/Battery.jpg" class="img-responsive img-centered" alt="" style="max-width: 45%;">
                             <div>
                             <p>After installing the SparkFun VL53L1X 4m laser distance sensor library, I was able to connec the QWIIC break-out board and start soldering the ToF sensors. Before soldering, we had to cut the QWIIC wire and match it to the corresponding pins on the ToF. The orientation is very important and I ended up making a mistake soldered the wires in the wrong direction for the two sensors. This has become a bit of an inconvenience during testing because it is harder to make sure both sensors are outputting similar values when the wires are in the way.</p>
                             <img src="img/Lab3/wired.jpg" class="img-responsive img-centered" alt="" style="max-width: 45%;">
-                            <h4>Task 2 - Mode selection and I2C address</h4>
+                            <h4>Mode selection and I2C address</h4>
                             <p>The first thing that was done in the section was to run the example "Example1_wire_I2C" and check whether the address matches the one we recorded during the prelab. As shown in the image below, the built-in address on the ToFs are 0x52 but it is showing 0x29. The reason behind this is because the least significant bit of the address is read/write making the built-in address 0x52. In binary, it can be seen that 0x29 has just been shifted left for the extra read/write bit.</p>
                             <img src="img/Lab3/I2C_Address.png" class="img-responsive img-centered" alt="">
                             <p>After testing short, medium (Had to use Polulu version of VL53L1X), and long mode, I have decided to use the short mode. This is because it is the most accurate when in close proximity and that is very important for RC cars going at a high velocity. Despite being short mode it still can detect up to 1.3m in distance which should be enough for the maze track at the end of the semester. The short mode also has a big advantage over the other two, which is that it is faster, and that is crucial in tight space obstacle avoidance. The range of 1.3m was pretty accurate only deviating around 4% from the actual distance, but this depends on the angle of the ToF as it is extrememly sensitive to change in angle. The ranging time was consistently around 4ms proving its speed.</p>
                             <img src="img/Lab3/accuracy.png" class="img-responsive img-centered" alt="">    
+                            <h4>2 ToF</h4>
                             <p>In the next section, Both ToFs were wired up to the Artemis board for testing. In order to work with two ToFs at the same time, at least one of the built-in address had to be changed. To realize this, I soldered an extra wire connecting a GPIO pin from the Artemis board to the XSHUT pin of one of the ToFs. The logic behind it is to disable one of the sensors before changing the address of the other. This way, we can assure that both ToFs have different addresses and can be ran simultaneously.</p>
                             <div class = "centered">
                                 <video width="640" height="480" controls>
@@ -532,6 +533,7 @@
                             <p>To print as fast as possible, the code should not wait for the data to be ready, therefore, I changed the code so that it would not stopRanging and from the output it can be seen that it takes roughly 8ms when there was data ready and reduced to 5ms when no data was ready. The limiting factor here is how often new ToF fata is ready because the loop does not wait for data anymore.</p>
                             <img src="img/Lab3/Q9.png" class="img-responsive img-centered" alt=""> 
                             <img src="img/Lab3/Q9_code.png" class="img-responsive img-centered" alt=""> 
+                            <h4>Data Collection</h4>
                             <p>For the Data collection and integration with bluetooth, I used the same method as I did for the IMU. I created two cases, one for reading the data, and one for sending the data. This way it was much easier to implement into the BLE existing code. Now I can gather data and send data when needed. The two images below demonstrate that the Artemis board is able to send data to the computer via bluetooth whether it is the ToF or the IMU. There was an issue that I encountered during the integration process after sending the ToF data, it would show an error 15. This did not really affect the data collection or sending the data so I am unable to debug the issue.</p>
                             <img src="img/Lab3/TOF_graph.png" class="img-responsive img-centered" alt="">    
                             <img src="img/Lab3/gyro_graph.png" class="img-responsive img-centered" alt="">  
