@@ -532,8 +532,9 @@
                             <p>To print as fast as possible, the code should not wait for the data to be ready, therefore, I changed the code so that it would not stopRanging and from the output it can be seen that it takes roughly 8ms when there was data ready and reduced to 5ms when no data was ready. The limiting factor here is how often new ToF fata is ready because the loop does not wait for data anymore.</p>
                             <img src="img/Lab3/Q9.png" class="img-responsive img-centered" alt=""> 
                             <img src="img/Lab3/Q9_code.png" class="img-responsive img-centered" alt=""> 
-                            <p></p>
-                            <img src="img/Lab2/gyro_code.png" class="img-responsive img-centered" alt="">    
+                            <p>For the Data collection and integration with bluetooth, I used the same method as I did for the IMU. I created two cases, one for reading the data, and one for sending the data. This way it was much easier to implement into the BLE existing code. Now I can gather data and send data when needed. The two images below demonstrate that the Artemis board is able to send data to the computer via bluetooth whether it is the ToF or the IMU. There was an issue that I encountered during the integration process after sending the ToF data, it would show an error 15. This did not really affect the data collection or sending the data so I am unable to debug the issue.</p>
+                            <img src="img/Lab2/TOF_graph.png" class="img-responsive img-centered" alt="">    
+                            <img src="img/Lab2/gyro_graph.png" class="img-responsive img-centered" alt="">  
                             <h4>Task 2 - Complimentary filter</h4>
                             <p>The complimentary filter integrates both the accelerometer and the gyroscope values with the tuning of the alpha value. This reduces the drift from the gyroscope and filters out noise from the accelerometer data. The roll graph is a perfect example where the gyroscope values are deviated and contains drift, and the accelerometer values are quite noisy but the complimentary filter is smoother.</p>
                             <div style="display: flex; justify-content: center; align-items: center;">
