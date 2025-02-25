@@ -519,9 +519,14 @@
                             <h4>Task 2 - Mode selection and I2C address</h4>
                             <p>The first thing that was done in the section was to run the example "Example1_wire_I2C" and check whether the address matches the one we recorded during the prelab. As shown in the image below, the built-in address on the ToFs are 0x52 but it is showing 0x29. The reason behind this is because the least significant bit of the address is read/write making the built-in address 0x52. In binary, it can be seen that 0x29 has just been shifted left for the extra read/write bit.</p>
                             <img src="img/Lab3/I2C_Address.png" class="img-responsive img-centered" alt="">
-                            <p>After testing short, medium (Had to use Polulu version of VL53L1X), and long mode, I have decided to use the short mode. This is because it is the most accurate when in close proximity and that is very important for RC cars going at a high velocity. Despite being short mode it still can detect up to 1.3m in distance which should be enough for the maze track at the end of the semester. The short mode also has a big advantage over the other two, which is that it is faster, and that is crucial in tight space obstacle avoidance.</p>
+                            <p>After testing short, medium (Had to use Polulu version of VL53L1X), and long mode, I have decided to use the short mode. This is because it is the most accurate when in close proximity and that is very important for RC cars going at a high velocity. Despite being short mode it still can detect up to 1.3m in distance which should be enough for the maze track at the end of the semester. The short mode also has a big advantage over the other two, which is that it is faster, and that is crucial in tight space obstacle avoidance. The range of 1.3m was pretty accurate only deviating around 4% from the actual distance, but this depends on the angle of the ToF as it is extrememly sensitive to change in angle. The ranging time was consistently around 4ms proving its speed.</p>
                             <img src="img/Lab3/accuracy.png" class="img-responsive img-centered" alt="">    
-                            <p>In the next section, we moved to analyzing the outputs of the Gyroscope through a series of measurements and adding a complementary filter to integrate both the gyro and accelerometer values together.</p>
+                            <p></p>
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/Lab2/2TOF.mp4" type="video/mp4">
+                                </video> 
+                            </div>
                             <h4>Task 1 - Gyroscope Pitch and Roll</h4>
                             <p></p>
                             <div style="display: flex; justify-content: center; align-items: center;">
