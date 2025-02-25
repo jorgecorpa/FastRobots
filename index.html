@@ -510,19 +510,13 @@
                             <p>For the pre-lab, we had to read about the Time of Flight sendsors and take note of the I2C address because it would be used later on when dealing with 2 ToFs. We also had to think about the wiring and the placement of the compoenents that would end up going onto the RC car later on.</p>
                             <h3>Soldering</h3>
                             <h4>Task 1 - Battery</h4>
-                            <p>In this section, we cut some of the JST connectors and soldered them together with the 750mAh battery to power the Artemis nano board. Later on, the board should be fully functional without having to connect it to the computer. We had to cut the ends off, slide heat shrinks on and solder them all together.</p>
+                            <p>In this section, we cut some of the JST connectors and soldered them together with the 750mAh battery to power the Artemis nano board. Later on, the board should be fully functional without having to connect it to the computer. We had to cut the ends off, slide heat shrinks on and solder them all together. The image below shows the board connecting to Bluetooth without connecting to the computer through a USB. I was able to transmit data and display it on the computer.</p>
                             <img src="img/Lab3/Battery.jpg" class="img-responsive img-centered" alt="">
-                            <p>The data was transmitted to the computer through the serial port at this instance and not BLE but it will later be implemented. The images below demonstrate the output at {-90,0,90} degrees pitch and roll</p>
-                            <div style="display: flex; justify-content: center; align-items: center;">
-                                <img src="img/Lab2/Task1_Pitch.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
-                                <img src="img/Lab2/Task1_Roll.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
-                            </div>
-                            <h4>Task 2 - Fourier Transform</h4>
-                            <p>To implement the fourier transform for the accelerometer data, the linked website in the lab script was very helpful to find the sample rate and N which ultimately led to finding the cut off frequency after analyzing the graphs. The graphs below show the noisiness of the accelerometer just with gentle taps on the table. From the FFT graph, it can be deduced that the cut-off frequency should be set at around 5Hz. This value was used to later implement the RC lowp-pass filter as taught in class.</p>
-                            <div style="display: flex; justify-content: center; align-items: center;">
-                                <img src="img/Lab2/pitch_without.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
-                                <img src="img/Lab2/roll_without.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
-                            </div>
+                            <p>After installing the SparkFun VL53L1X 4m laser distance sensor library, I was able to connec the QWIIC break-out board and start soldering the ToF sensors. Before soldering, we had to cut the QWIIC wire and match it to the corresponding pins on the ToF. The orientation is very important and I ended up making a mistake soldered the wires in the wrong direction for the two sensors. This has become a bit of an inconvenience during testing because it is harder to make sure both sensors are outputting similar values when the wires are in the way.</p>
+                            <img src="img/Lab3/wired.jpg" class="img-responsive img-centered" alt="">
+                            <h4>Task 2 - Mode selection and I2C address</h4>
+                            <p>The first thing that was done in the section was to run the example "Example1_wire_I2C" and check whether the address matches the one we recorded during the prelab. As shown in the image below, the built-in address on the ToFs are 0x52 but it is showing 0x29. The reason behind this is because the least significant bit of the address is read/write making the built-in address 0x52. In binary, it can be seen that 0x29 has just been shifted left for the extra read/write bit.</p>
+                            <img src="img/Lab3/I2C_Address.png" class="img-responsive img-centered" alt="">
                             <div style="display: flex; justify-content: center; align-items: center;">
                                 <img src="img/Lab2/pitch_LPF.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
                                 <img src="img/Lab2/Roll_LPF.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
