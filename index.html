@@ -584,9 +584,20 @@
                             </div>
                             <p>The images above show that 3.7V was set on the power supply before plugging in the battery to test the PWM signal coming from the motor driver board. After soldering the motor driver board onto the Artemis board to pins A2, A3, A14, and A15, I could run simple PWM signals with the command  analogWrite. The image below also shows how the PWM does not work properly before the motor driver board was grounded to the Artemis board.</p>
                             <img src="img/Lab4/before.jpg" class="img-responsive img-centered" alt="" style="max-width: 45%;">
-                            <h4>Mode selection and I2C address</h4>
-                            <p>The first thing that was done in the section was to run the example "Example1_wire_I2C" and check whether the address matches the one we recorded during the prelab. As shown in the image below, the built-in address on the ToFs are 0x52 but it is showing 0x29. The reason behind this is because the least significant bit of the address is read/write making the built-in address 0x52. In binary, it can be seen that 0x29 has just been shifted left for the extra read/write bit.</p>
-                            <img src="img/Lab3/I2C_Address.png" class="img-responsive img-centered" alt="">
+
+                            <p>To wire everything onto the RC car, the board that was previously in the car had to be removed and the wired connected to the two motors and battery were soldered onto the 2 motor drive board.</p>
+                            <img src="img/Lab4/forward_back.png" class="img-responsive img-centered" alt="" style="max-width: 45%;"> 
+                            <p>With the code above, I was able to test both sides of the wheels to move forward and backward each for a few seconds. The videos below demonstrate the funcationality. The code provided is not the full code but only the section of the forward motion. The backward spin is just flipping the 0 with the "Speed" for the motor pins.</p>
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/Lab4/Left_wheel.mp4" type="video/mp4">
+                                </video> 
+                            </div>
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/Lab4/Right_wheel.mp4" type="video/mp4">
+                                </video> 
+                            </div>    
                             <p>After testing short, medium (Had to use Polulu version of VL53L1X), and long mode, I have decided to use the short mode. This is because it is the most accurate when in close proximity and that is very important for RC cars going at a high velocity. Despite being short mode it still can detect up to 1.3m in distance which should be enough for the maze track at the end of the semester. The short mode also has a big advantage over the other two, which is that it is faster, and that is crucial in tight space obstacle avoidance. The range of 1.3m was pretty accurate only deviating around 4% from the actual distance, but this depends on the angle of the ToF as it is extrememly sensitive to change in angle. The ranging time was consistently around 4ms proving its speed.</p>
                             <img src="img/Lab3/accuracy.png" class="img-responsive img-centered" alt="">    
                             <h4>2 ToF</h4>
