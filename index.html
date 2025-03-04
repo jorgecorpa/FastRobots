@@ -631,8 +631,14 @@
                                 </video> 
                             </div>  
                             <h4>5000 Level</h4>
-                            <p>By measuring the output of a random pin on the artemis board that supports PWM, I programmed the pin to output a 50% duty cycle PWM and observed the frequency on the oscilloscope. As shown in the image below, at 50% duty cylce, the frequency is only at 183.48 Hz, which is relatively low for the motors to run smoothly, causing motor vibrations, and less precise speed control.</p>
+                            <p>By measuring the output of a random pin on the artemis board that supports PWM, I programmed the pin to output a 50% duty cycle PWM and observed the frequency on the oscilloscope. As shown in the image below, at 50% duty cylce, the frequency is only at 183.48 Hz, which is relatively low for the motors to run smoothly, causing motor vibrations, and less precise speed control. By manually configuring timers, higher frequencies could be set making the motors smoother and more efficient.</p>
                             <img src="img/Lab4/osci_5000.jpg" class="img-responsive img-centered" alt="">
+                            <p>To test the lowest PWM speed after overcoming the friction, I first ran the car at 40 and 140 for the forward and turn motion. In motion, the PWM would drop to its limit of 25 and 110, for forward and turning motion respectively. The following video demonstrates first the forward part then the turning motion. </p>
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/Lab4/5000_forward_turn.mp4" type="video/mp4">
+                                </video> 
+                            </div>  
                             <h4>Discussion</h4>
                             <p>In this lab, I was able to refresh my soldering skills and wiring practice which might come in handy in the future. I have also learned that ToFs have built-in addresses and have explored different methods on how to run the 2 sensors together. I had some issues where one of the ToF needed to be unplugged and plugged back in everytime I flashed the Artemis board or else it would not initialize. I thought I had bypassed the issue has it happens less but it still does once in a while. I will work on it more to make sure it does not happen during the stunt-race.</p>
                             <h3>Reference</h3>
