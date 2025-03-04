@@ -618,14 +618,18 @@
                             </div>  
                             <div class = "centered">
                                 <video width="640" height="480" controls>
-                                <source src="./img/Lab4/Q10.mp4" type="video/mp4">
+                                <source src="./img/Lab4/straight.mp4" type="video/mp4">
                                 </video> 
                             </div>  
                             
-                            <h4>Data Collection</h4>
-                            <p>For the Data collection and integration with bluetooth, I used the same method as I did for the IMU. I created two cases, one for reading the data, and one for sending the data. This way it was much easier to implement into the BLE existing code. Now I can gather data and send data when needed. The two images below demonstrate that the Artemis board is able to send data to the computer via bluetooth whether it is the ToF or the IMU. There was an issue that I encountered during the integration process after sending the ToF data, it would show an error 15. This did not really affect the data collection or sending the data so I am unable to debug the issue.</p>
-                            <img src="img/Lab3/TOF_graph.png" class="img-responsive img-centered" alt="">    
-                            <img src="img/Lab3/gyro_graph.png" class="img-responsive img-centered" alt="">  
+                            <h4>Open Loop Control</h4>
+                            <p>The code below shows how the open loop control was implemented into the artemis board to replace the controller. The video below shows the car taking 2 turns after 2 seconds of moving forward.</p>
+                            <img src="img/Lab4/calibrate.png" class="img-responsive img-centered" alt="">
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/Lab4/Q10_1.mp4" type="video/mp4">
+                                </video> 
+                            </div>  
                             <h4>5000 Level</h4>
                             <p>Many Sensors like Time of flight sensors use infrared technology to calculate the time by keeping track of the time it takes for the infra-red to bounce back from the obstacle infront of it. This is then converted into distance. ToFs are able to work in environments with low light and can still maintain high accuracy compared to other techonologies. It is an very small and compact compared to other variations such as infra-red triangulation sensors. The limits of ToFs come when distance matters as they are limited to maximum 4m with the long mode as we tested above. Highly reflective surfaces might even affect the performance of the ToF.</p>
                             <h4>Discussion</h4>
