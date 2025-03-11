@@ -693,54 +693,7 @@
                                 <img src="img/Lab5/PID_ToF.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
                                 <img src="img/Lab5/PID_PWM.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
                             </div>
-                            <p>The images above show that 3.7V was set on the power supply before plugging in the battery to test the PWM signal coming from the motor driver board. After soldering the motor driver board onto the Artemis board to pins A2, A3, A14, and A15, I could run simple PWM signals with the command  analogWrite. The image below also shows how the PWM does not work properly before the motor driver board was grounded to the Artemis board.</p>
-                            <img src="img/Lab4/before.jpg" class="img-responsive img-centered" alt="" style="max-width: 45%;">
-
-                            <p>To wire everything onto the RC car, the board that was previously in the car had to be removed and the wired connected to the two motors and battery were soldered onto the 2 motor drive board.</p>
-                            <img src="img/Lab4/forward_back.png" class="img-responsive img-centered" alt="" style="max-width: 45%;"> 
-                            <p>With the code above, I was able to test both sides of the wheels to move forward and backward each for a few seconds. The videos below demonstrate the funcationality. The code provided is not the full code but only the section of the forward motion. The backward spin is just flipping the 0 with the "Speed" for the motor pins.</p>
-                            <div class = "centered">
-                                <video width="640" height="480" controls>
-                                <source src="./img/Lab4/Left_wheel.mp4" type="video/mp4">
-                                </video> 
-                            </div>
-                            <div class = "centered">
-                                <video width="640" height="480" controls>
-                                <source src="./img/Lab4/Right_wheel.mp4" type="video/mp4">
-                                </video> 
-                            </div>  
-                            <h4>Installing everything into the car</h4>
-                            <p>The next step was to complete all the soldering and place every component including the ToFs and IMU from the previous labs into the RC Car. The image below shows where all components are placed within the car. To fix all the components in place, I used electrical tape to bundle the wires together and used foam stickers to stick the motor driver boards near the front side of the car.</p>
-                            <img src="img/Lab4/All_components.jpg" class="img-responsive img-centered" alt="">    
-                            <h4>PWM lower limit</h4>
-                            <p>To find the lower limit of the PWM during forward motion and spinning in place, I started with 60 PWM and 150 PWM respectively. I then lowered the PWM value by 5 each time until it stopped working completly. The final values were 40 and 140 for the forward and spinning motion respectively. These were the values where the car could overcome the friction and complete the motion slowly. </p>
-                            <div class = "centered">
-                                <video width="640" height="480" controls>
-                                <source src="./img/Lab4/Q8.mp4" type="video/mp4">
-                                </video> 
-                            </div>  
-                            <h4>Straight Line</h4>
-                            <p>At the beginning, the motors were not even in terms of output so it would deviate towards the left as shown in the first video below. After calibration, it can be seen that the car can follow the line between the tiles on the floor and end on the line after travelling 9 feet.</p>
-                            <img src="img/Lab4/calibrate.png" class="img-responsive img-centered" alt="">
-                            <div class = "centered">
-                                <video width="640" height="480" controls>
-                                <source src="./img/Lab4/before_calibration.mp4" type="video/mp4">
-                                </video> 
-                            </div>  
-                            <div class = "centered">
-                                <video width="640" height="480" controls>
-                                <source src="./img/Lab4/straight.mp4" type="video/mp4">
-                                </video> 
-                            </div>  
                             
-                            <h4>Open Loop Control</h4>
-                            <p>The code below shows how the open loop control was implemented into the artemis board to replace the controller. The video below shows the car taking 2 turns after 2 seconds of moving forward.</p>
-                            <img src="img/Lab4/open_loop.png" class="img-responsive img-centered" alt="">
-                            <div class = "centered">
-                                <video width="640" height="480" controls>
-                                <source src="./img/Lab4/Q10_1.mp4" type="video/mp4">
-                                </video> 
-                            </div>  
                             <h4>5000 Level</h4>
                             <p>Integrator wind-up occurs when the error is too large for an extended period of time, which causes the integram component to grow too big. This normally causes the robot to overshoot as shown in the video below. This is the same set up as the video above showing the PID controller but without the wind-up protection.</p>
                             <img src="img/Lab5/wind.png" class="img-responsive img-centered" alt="">
