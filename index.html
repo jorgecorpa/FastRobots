@@ -662,15 +662,15 @@
            <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                            <h2>Lab4: Motors and Open Loop Control </h2>
-                            <p>In Lab 4, we had to wire and solder 2 motor driver boards and test it using open loop control instead of controlling it with the controller.</p>
+                            <h2>Lab 5: Linear PID control and Linear interpolation </h2>
+                            <p>In Lab 5, we had to design and tune the PID controller for our RC Cars. This consisted of taking a few steps like linking bluetooth to start the PID, change gain values, plot data...</p>
                             <ul class="list-inline item-details">
                             <h4>Pre Lab</h4>
-                            <p>For Pre lab, we had to plan out the circuit diagram before soldering components onto the RC car. It is important to draw the circuit diagram and know how to wire because we are going to parallel-couple inputs to draw more current without heating the board. Wire length needs to be pre measured to make sure everything fits within the chassis and easy to fix if needed.</p>
-                            <h4>Circuit Diagram</h4>
-                            <img src="img/Lab4/Wiring.jpg" class="img-responsive img-centered" alt=""> 
-                            <p>Since we had to parallel-couple inputs, AIN1 and BIN1 were soldered together. AIN2 and BIN2 were also soldered together in a similar manner. The output pins were also wired together, AOUT1 & BOUT1 and AOUT2 & BOUT2. We had two DC motors so the same thing had to be done on the other motor driver board. I also grounded the board to the Artemis board because the oscilloscope was showing an incorrect PWM waveform. The ground and VIN on the output side were soldered onto the onbaord battery that powers the RC Car and not the Artemis board battery. </p>
-                            <h4>Battery</h4>
+                            <p>For Pre lab, I created 2 cases, TOGGLE_PID and SEND_PID. The toggle is just a flag that activates the PID controller section of the bluetooth code. Send PID is just logging the values into arrays before sending it across to the computer. These methods were quite similar to how I wrote the code for logging and sending IMU and ToF data.</p>
+                            <img src="img/Lab4/toggle.png" class="img-responsive img-centered" alt="">
+                            <img src="img/Lab4/send.png" class="img-responsive img-centered" alt=""> 
+                            <p>Instead of creating a new case, I modified the pre-existing send three float and assigned the new values Kp, Ki, and Kd. To accomodate for the graph, I also changed the pid index back to the start and cleared the arrays just in case.</p>
+                            <img src="img/Lab4/change.png" class="img-responsive img-centered" alt=""> 
                             <p>The Artemis board runs off a 750 mAh battery just by itself and the motors are powered by the 850 mAh battery. This is to avoid the possibility of occuring a transient effect where the motors draw too much current and can possibly shut the Artemis down due to the drop in voltage. By separating them, we aviod any issues that may cause the Artemis Board to shutdown due to power issues.</p>
                             <div style="display: flex; justify-content: center; align-items: center;">
                                 <img src="img/Lab4/power_supply.jpg" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
