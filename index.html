@@ -679,14 +679,19 @@
                                 <source src="./img/Lab5/P.mp4" type="video/mp4">
                                 </video> 
                             </div>
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <img src="img/Lab5/P2_ToF.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
+                                <img src="img/Lab5/P2_PWM.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
+                            </div>
+                            <p>The video below shows the car going at high speed and stopping 1ft away(~300mm)from the wall after tuning all three Kp, Ki, and Kd values. The integral component removes steady-state error by accumulating the total error. However, this causes overshoots which can be solved by the derivative part.</p>
                             <div class = "centered">
                                 <video width="640" height="480" controls>
                                 <source src="./img/Lab5/PID.mp4" type="video/mp4">
                                 </video> 
                             </div>
                             <div style="display: flex; justify-content: center; align-items: center;">
-                                <img src="img/Lab4/power_supply.jpg" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
-                                <img src="img/Lab4/osci_1.jpg" class="img-responsive img-centered" alt="" style="max-width: 45%;">
+                                <img src="img/Lab5/PID_ToF.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
+                                <img src="img/Lab5/PID_PWM.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
                             </div>
                             <p>The images above show that 3.7V was set on the power supply before plugging in the battery to test the PWM signal coming from the motor driver board. After soldering the motor driver board onto the Artemis board to pins A2, A3, A14, and A15, I could run simple PWM signals with the command  analogWrite. The image below also shows how the PWM does not work properly before the motor driver board was grounded to the Artemis board.</p>
                             <img src="img/Lab4/before.jpg" class="img-responsive img-centered" alt="" style="max-width: 45%;">
