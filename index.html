@@ -659,27 +659,84 @@
                     </div>
                 </div>
             </div>
-            <div class="container">
+           <div class="container">
                 <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Project Title</h2>
-                            <hr class="star-primary">
-                            <img src="img/portfolio/safe.png" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                    <div class="col-lg-12">
+                            <h2>Lab4: Motors and Open Loop Control </h2>
+                            <p>In Lab 4, we had to wire and solder 2 motor driver boards and test it using open loop control instead of controlling it with the controller.</p>
                             <ul class="list-inline item-details">
-                                <li>Client:
-                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
-                                    </strong>
-                                </li>
-                                <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
-                                    </strong>
-                                </li>
-                                <li>Service:
-                                    <strong><a href="http://startbootstrap.com">Web Development</a>
-                                    </strong>
-                                </li>
+                            <h4>Pre Lab</h4>
+                            <p>For Pre lab, we had to plan out the circuit diagram before soldering components onto the RC car. It is important to draw the circuit diagram and know how to wire because we are going to parallel-couple inputs to draw more current without heating the board. Wire length needs to be pre measured to make sure everything fits within the chassis and easy to fix if needed.</p>
+                            <h4>Circuit Diagram</h4>
+                            <img src="img/Lab4/Wiring.jpg" class="img-responsive img-centered" alt=""> 
+                            <p>Since we had to parallel-couple inputs, AIN1 and BIN1 were soldered together. AIN2 and BIN2 were also soldered together in a similar manner. The output pins were also wired together, AOUT1 & BOUT1 and AOUT2 & BOUT2. We had two DC motors so the same thing had to be done on the other motor driver board. I also grounded the board to the Artemis board because the oscilloscope was showing an incorrect PWM waveform. The ground and VIN on the output side were soldered onto the onbaord battery that powers the RC Car and not the Artemis board battery. </p>
+                            <h4>Battery</h4>
+                            <p>The Artemis board runs off a 750 mAh battery just by itself and the motors are powered by the 850 mAh battery. This is to avoid the possibility of occuring a transient effect where the motors draw too much current and can possibly shut the Artemis down due to the drop in voltage. By separating them, we aviod any issues that may cause the Artemis Board to shutdown due to power issues.</p>
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <img src="img/Lab4/power_supply.jpg" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
+                                <img src="img/Lab4/osci_1.jpg" class="img-responsive img-centered" alt="" style="max-width: 45%;">
+                            </div>
+                            <p>The images above show that 3.7V was set on the power supply before plugging in the battery to test the PWM signal coming from the motor driver board. After soldering the motor driver board onto the Artemis board to pins A2, A3, A14, and A15, I could run simple PWM signals with the command  analogWrite. The image below also shows how the PWM does not work properly before the motor driver board was grounded to the Artemis board.</p>
+                            <img src="img/Lab4/before.jpg" class="img-responsive img-centered" alt="" style="max-width: 45%;">
+
+                            <p>To wire everything onto the RC car, the board that was previously in the car had to be removed and the wired connected to the two motors and battery were soldered onto the 2 motor drive board.</p>
+                            <img src="img/Lab4/forward_back.png" class="img-responsive img-centered" alt="" style="max-width: 45%;"> 
+                            <p>With the code above, I was able to test both sides of the wheels to move forward and backward each for a few seconds. The videos below demonstrate the funcationality. The code provided is not the full code but only the section of the forward motion. The backward spin is just flipping the 0 with the "Speed" for the motor pins.</p>
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/Lab4/Left_wheel.mp4" type="video/mp4">
+                                </video> 
+                            </div>
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/Lab4/Right_wheel.mp4" type="video/mp4">
+                                </video> 
+                            </div>  
+                            <h4>Installing everything into the car</h4>
+                            <p>The next step was to complete all the soldering and place every component including the ToFs and IMU from the previous labs into the RC Car. The image below shows where all components are placed within the car. To fix all the components in place, I used electrical tape to bundle the wires together and used foam stickers to stick the motor driver boards near the front side of the car.</p>
+                            <img src="img/Lab4/All_components.jpg" class="img-responsive img-centered" alt="">    
+                            <h4>PWM lower limit</h4>
+                            <p>To find the lower limit of the PWM during forward motion and spinning in place, I started with 60 PWM and 150 PWM respectively. I then lowered the PWM value by 5 each time until it stopped working completly. The final values were 40 and 140 for the forward and spinning motion respectively. These were the values where the car could overcome the friction and complete the motion slowly. </p>
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/Lab4/Q8.mp4" type="video/mp4">
+                                </video> 
+                            </div>  
+                            <h4>Straight Line</h4>
+                            <p>At the beginning, the motors were not even in terms of output so it would deviate towards the left as shown in the first video below. After calibration, it can be seen that the car can follow the line between the tiles on the floor and end on the line after travelling 9 feet.</p>
+                            <img src="img/Lab4/calibrate.png" class="img-responsive img-centered" alt="">
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/Lab4/before_calibration.mp4" type="video/mp4">
+                                </video> 
+                            </div>  
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/Lab4/straight.mp4" type="video/mp4">
+                                </video> 
+                            </div>  
+                            
+                            <h4>Open Loop Control</h4>
+                            <p>The code below shows how the open loop control was implemented into the artemis board to replace the controller. The video below shows the car taking 2 turns after 2 seconds of moving forward.</p>
+                            <img src="img/Lab4/open_loop.png" class="img-responsive img-centered" alt="">
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/Lab4/Q10_1.mp4" type="video/mp4">
+                                </video> 
+                            </div>  
+                            <h4>5000 Level</h4>
+                            <p>By measuring the output of a random pin on the artemis board that supports PWM, I programmed the pin to output a 50% duty cycle PWM and observed the frequency on the oscilloscope. As shown in the image below, at 50% duty cylce, the frequency is only at 183.48 Hz, which is relatively low for the motors to run smoothly, causing motor vibrations, and less precise speed control. By manually configuring timers, higher frequencies could be set making the motors smoother and more efficient.</p>
+                            <img src="img/Lab4/osci_5000.jpg" class="img-responsive img-centered" alt="">
+                            <p>To test the lowest PWM speed after overcoming the friction, I first ran the car at 40 and 140 for the forward and turn motion. In motion, the PWM would drop to its limit of 25 and 110, for forward and turning motion respectively. The following video demonstrates first the forward part then the turning motion. </p>
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/Lab4/5000_forward_turn.mp4" type="video/mp4">
+                                </video> 
+                            </div>  
+                            <h4>Discussion</h4>
+                            <p>This lab taught me how to solder more efficiently and think about component placements in a compact space. The programming was relatively straight forward but I found it interesting that the motors needed calibration as they were off by a lot.</p>
+                            <h3>Reference</h3>
+                            <p>To complete this weeks lab, I consulted with Aidan Derocher and referred to the websites of Nila Narayan and Mikayla Lahr for some inspirations on how to complete the tasks.</p>
                             </ul>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                         </div>
