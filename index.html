@@ -742,12 +742,12 @@
                                 </video> 
                             </div>  
                             <h4>5000 Level</h4>
-                            <p>By measuring the output of a random pin on the artemis board that supports PWM, I programmed the pin to output a 50% duty cycle PWM and observed the frequency on the oscilloscope. As shown in the image below, at 50% duty cylce, the frequency is only at 183.48 Hz, which is relatively low for the motors to run smoothly, causing motor vibrations, and less precise speed control. By manually configuring timers, higher frequencies could be set making the motors smoother and more efficient.</p>
-                            <img src="img/Lab4/osci_5000.jpg" class="img-responsive img-centered" alt="">
-                            <p>To test the lowest PWM speed after overcoming the friction, I first ran the car at 40 and 140 for the forward and turn motion. In motion, the PWM would drop to its limit of 25 and 110, for forward and turning motion respectively. The following video demonstrates first the forward part then the turning motion. </p>
+                            <p>Integrator wind-up occurs when the error is too large for an extended period of time, which causes the integram component to grow too big. This normally causes the robot to overshoot as shown in the video below. This is the same set up as the video above showing the PID controller but without the wind-up protection.</p>
+                            <img src="img/Lab5/wind.png" class="img-responsive img-centered" alt="">
+                            <p></p>
                             <div class = "centered">
                                 <video width="640" height="480" controls>
-                                <source src="./img/Lab4/5000_forward_turn.mp4" type="video/mp4">
+                                <source src="./img/Lab5/wind.mp4" type="video/mp4">
                                 </video> 
                             </div>  
                             <h4>Discussion</h4>
