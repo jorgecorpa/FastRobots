@@ -673,7 +673,7 @@
                             <p>Instead of creating a new case, I modified the pre-existing send three float and assigned the new values Kp, Ki, and Kd. To accomodate for the graph, I also changed the pid index back to the start and cleared the arrays just in case.</p>
                             <img src="img/Lab5/change.png" class="img-responsive img-centered" alt=""> 
                             <h4>PID</h4>
-                            <p>For the main task of the lab, I implemented the proportional componenent of the controller to find the right Kp value.</p>
+                            <p>For the main task of the lab, I implemented the proportional componenent of the controller to find the right Kp value. Since the maximum PWM value is 255 but we need to accomodate for backtracking, the range I set was 40 ~ 166 and -166 ~ -40. It does not reach zero because below 40, the car finds it hard to move especially when backtracking. The motors will only output 0 when the error reaches 0 (Not the best solution because it is hard to hit exactly zero so I will add some tolerance after finishing the rest of the lab). For Kp, I started off with 0.5 and tesed the limits of both ends and settled on 0.2. anything below this value makes the car go very slow (the minimum speed).</p>
                             <div class = "centered">
                                 <video width="640" height="480" controls>
                                 <source src="./img/Lab5/P.mp4" type="video/mp4">
