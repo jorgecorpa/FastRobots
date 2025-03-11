@@ -667,10 +667,10 @@
                             <ul class="list-inline item-details">
                             <h4>Pre Lab</h4>
                             <p>For Pre lab, I created 2 cases, TOGGLE_PID and SEND_PID. The toggle is just a flag that activates the PID controller section of the bluetooth code. Send PID is just logging the values into arrays before sending it across to the computer. These methods were quite similar to how I wrote the code for logging and sending IMU and ToF data.</p>
-                            <img src="img/Lab4/toggle.png" class="img-responsive img-centered" alt="">
-                            <img src="img/Lab4/send.png" class="img-responsive img-centered" alt=""> 
+                            <img src="img/Lab5/toggle.png" class="img-responsive img-centered" alt="">
+                            <img src="img/Lab5/send.png" class="img-responsive img-centered" alt=""> 
                             <p>Instead of creating a new case, I modified the pre-existing send three float and assigned the new values Kp, Ki, and Kd. To accomodate for the graph, I also changed the pid index back to the start and cleared the arrays just in case.</p>
-                            <img src="img/Lab4/change.png" class="img-responsive img-centered" alt=""> 
+                            <img src="img/Lab5/change.png" class="img-responsive img-centered" alt=""> 
                             <p>The Artemis board runs off a 750 mAh battery just by itself and the motors are powered by the 850 mAh battery. This is to avoid the possibility of occuring a transient effect where the motors draw too much current and can possibly shut the Artemis down due to the drop in voltage. By separating them, we aviod any issues that may cause the Artemis Board to shutdown due to power issues.</p>
                             <div style="display: flex; justify-content: center; align-items: center;">
                                 <img src="img/Lab4/power_supply.jpg" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
