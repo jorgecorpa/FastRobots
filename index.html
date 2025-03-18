@@ -733,7 +733,7 @@
                             <p>For Pre lab, I set up the program to send and receive data through BLE. To do this, I created 4 cases, Toggle_PID, Stop_PID, Set_yaw_Target, and Send_PID_Data to control the robot while it is tetherless. The Toggle_PID starts the robot but before that, a target has to be assigned to the robot or the default value is 0. Once the robot has aligned with the target value, Send_PID_data sends all the stored values across via bluetooth to the computer for visualization purposes. Stop_PID, which is used to stop the car at anytime, was implemented incase the car gets out of control.</p>
                             <img src="img/Lab6/prelab.png" class="img-responsive img-centered" alt="">
                             <img src="img/Lab6/prelab2.png" class="img-responsive img-centered" alt=""> 
-                            <p>On the computer end, I modified the notification handler from previous labs and added a few more lists to fill when data is sent with the SEND_PID_LOGS as shown in the image above</p>
+                            <p>On the computer end, I modified the notification handler from previous labs and added a few more lists to fill when data is sent with the SEND_PID_LOGS as shown in the image above.</p>
                             <img src="img/Lab6/send.png" class="img-responsive img-centered" alt=""> 
                             <h4>PID</h4>
                             <p>For the main task of the lab, I used the base from lab 5 as a starting point to implement PID into the system for the IMU. P stands proportional and it is just the error between the target and current angle of the car multiplied by a constant Kp. I stands for Integral, which is the cumulated error over time to accomodate for the steady state error produced by the propoertional term. Then there is the D term which stands for Deferential and it is the rate of change of error multiplied with constant Kd. This accomodates the overshoots caused by PI.</p>
@@ -745,7 +745,7 @@
                             <p>The video below shows the car going at high speed and stopping 1ft away(~300mm)from the wall after tuning all three Kp, Ki, and Kd values. The integral component removes steady-state error by accumulating the total error. However, this causes overshoots which can be solved by the derivative part.</p>
                             <div style="display: flex; justify-content: center; align-items: center;">
                                 <img src="img/Lab6/PI.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
-                                <img src="img/Lab6/PI_yaw_PWM.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
+                                <img src="img/Lab6/PI_yaw.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
                             </div>
                             <img src="img/Lab6/PImotor.png" class="img-responsive img-centered" alt="">
                             <h4>DMP</h4>
