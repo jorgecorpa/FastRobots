@@ -757,16 +757,11 @@
                             <img src="img/dmp.png" class="img-responsive img-centered" alt="">
                             <img src="img/Lab6/q.png" class="img-responsive img-centered" alt="">
                             <h4>5000 Level</h4>
-                            <p>Integrator wind-up occurs when the error is too large for an extended period of time, which causes the integram component to grow too big. This normally causes the robot to overshoot as shown in the video below. This is the same set up as the video above showing the PID controller but without the wind-up protection.</p>
+                            <p>Wind-up protection is essential in PID controller to prevent an excessive accumulation of the integral term as the system saturates. When experimenting, the car would reach the target angle and stop for a while, but if left untouched for a while it would start tweaking a bit, most likely caused by integral wind-up. When it reaches the target the P term is zero so the only thing moving it would be from the accumulated error. This can be solved by clamping the integral terms. I set it as -1000 and 1000 to allow a bit more leeway.</p>
                             <img src="img/Lab5/wind.png" class="img-responsive img-centered" alt="">
-                            <p></p>
-                            <div class = "centered">
-                                <video width="640" height="480" controls>
-                                <source src="./img/Lab5/wind.mp4" type="video/mp4">
-                                </video> 
-                            </div>  
+                            
                             <h4>Discussion</h4>
-                            <p>This lab taught me how to implement and tune values for a PID controller by implementing commands through bluetooth and not having to change values manually. The programming was harder than expected especially for the extrpolation section where I was not able to complete it fully as there were timing conflicts between the estimated and raw values.</p>
+                            <p>This lab I was able to refreash my memory on how to deal with the IMU like in Lab2. Apart from that, it was quite striaght forward in terms of implementing the PID controller and tuning process of the system. Learning how the DMP works was very interesting as I did not know of its existance.</p>
                             <h3>Reference</h3>
                             <p>To complete this weeks lab, I consulted with Aidan Derocher and referred to the websites of Nila Narayan and Mikayla Lahr for some inspirations on how to complete the tasks.</p>
                             </ul>
