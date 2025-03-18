@@ -723,27 +723,54 @@
                     </div>
                 </div>
             </div>
-            <div class="container">
+           <div class="container">
                 <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Project Title</h2>
-                            <hr class="star-primary">
-                            <img src="img/portfolio/submarine.png" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                    <div class="col-lg-12">
+                            <h2>Lab 5: Linear PID control and Linear interpolation </h2>
+                            <p>In Lab 5, we had to design and tune the PID controller for our RC Cars. This consisted of taking a few steps like linking bluetooth to start the PID, change gain values, plot data...</p>
                             <ul class="list-inline item-details">
-                                <li>Client:
-                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
-                                    </strong>
-                                </li>
-                                <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
-                                    </strong>
-                                </li>
-                                <li>Service:
-                                    <strong><a href="http://startbootstrap.com">Web Development</a>
-                                    </strong>
-                                </li>
+                            <h4>Pre Lab</h4>
+                            <p>For Pre lab, I created 2 cases, TOGGLE_PID and SEND_PID. The toggle is just a flag that activates the PID controller section of the bluetooth code. Send PID is just logging the values into arrays before sending it across to the computer. These methods were quite similar to how I wrote the code for logging and sending IMU and ToF data.</p>
+                            <h3>Bluetooth</h3>
+                            <img src="img/Lab5/toggle.png" class="img-responsive img-centered" alt="">
+                            <img src="img/Lab5/send.png" class="img-responsive img-centered" alt=""> 
+                            <p>Instead of creating a new case, I modified the pre-existing send three float and assigned the new values Kp, Ki, and Kd. To accomodate for the graph, I also changed the pid index back to the start and cleared the arrays just in case.</p>
+                            <img src="img/Lab5/change.png" class="img-responsive img-centered" alt=""> 
+                            <h4>PID</h4>
+                            <p>For the main task of the lab, I implemented the proportional componenent of the controller to find the right Kp value. Since the maximum PWM value is 255 but we need to accomodate for backtracking, the range I set was 40 ~ 166 and -166 ~ -40. It does not reach zero because below 40, the car finds it hard to move especially when backtracking. The motors will only output 0 when the error reaches 0 (Not the best solution because it is hard to hit exactly zero so I will add some tolerance after finishing the rest of the lab). For Kp, I started off with 0.5 and tesed the limits of both ends and settled on 0.2. anything below this value makes the car go very slow (the minimum speed). The proportional term measures based on the error difference between the car and the obstacle ahead.</p>
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/Lab5/P.mp4" type="video/mp4">
+                                </video> 
+                            </div>
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <img src="img/Lab5/P2_ToF.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
+                                <img src="img/Lab5/P2_PWM.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
+                            </div>
+                            <p>The video below shows the car going at high speed and stopping 1ft away(~300mm)from the wall after tuning all three Kp, Ki, and Kd values. The integral component removes steady-state error by accumulating the total error. However, this causes overshoots which can be solved by the derivative part.</p>
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/Lab5/PID.mp4" type="video/mp4">
+                                </video> 
+                            </div>
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <img src="img/Lab5/PID_ToF.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
+                                <img src="img/Lab5/PID_PWM.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
+                            </div>
+                            
+                            <h4>5000 Level</h4>
+                            <p>Integrator wind-up occurs when the error is too large for an extended period of time, which causes the integram component to grow too big. This normally causes the robot to overshoot as shown in the video below. This is the same set up as the video above showing the PID controller but without the wind-up protection.</p>
+                            <img src="img/Lab5/wind.png" class="img-responsive img-centered" alt="">
+                            <p></p>
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/Lab5/wind.mp4" type="video/mp4">
+                                </video> 
+                            </div>  
+                            <h4>Discussion</h4>
+                            <p>This lab taught me how to implement and tune values for a PID controller by implementing commands through bluetooth and not having to change values manually. The programming was harder than expected especially for the extrpolation section where I was not able to complete it fully as there were timing conflicts between the estimated and raw values.</p>
+                            <h3>Reference</h3>
+                            <p>To complete this weeks lab, I consulted with Aidan Derocher and referred to the websites of Nila Narayan and Mikayla Lahr for some inspirations on how to complete the tasks.</p>
                             </ul>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                         </div>
