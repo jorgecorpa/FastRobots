@@ -662,11 +662,11 @@
            <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                            <h2>Lab 5: Linear PID control and Linear interpolation </h2>
-                            <p>In Lab 5, we had to design and tune the PID controller for our RC Cars. This consisted of taking a few steps like linking bluetooth to start the PID, change gain values, plot data...</p>
+                            <h2>Lab 6: Orientation Control </h2>
+                            <p>In Lab 6,similar to lab where we had to design and implement a PID controller for the ToF sensors, this week we did the same for the IMU. The PID controller was the same but some slight changes needed to be made for example the usage of DMP.</p>
                             <ul class="list-inline item-details">
                             <h4>Pre Lab</h4>
-                            <p>For Pre lab, I created 2 cases, TOGGLE_PID and SEND_PID. The toggle is just a flag that activates the PID controller section of the bluetooth code. Send PID is just logging the values into arrays before sending it across to the computer. These methods were quite similar to how I wrote the code for logging and sending IMU and ToF data.</p>
+                            <p>For Pre lab, I set up the program to send and receive data through BLE. To do this, I created 4 cases, Toggle_PID, Stop_PID, Set_yaw_Target, and Send_PID_Data to control the robot while it is tetherless. The Toggle_PID starts the robot but before that, a target has to be assigned to the robot or the default value is 0. Once the robot has aligned with the target value, Send_PID_data sends all the stored values across via bluetooth to the computer for visualization purposes. Stop_PID, which is used to stop the car at anytime, was implemented incase the car gets out of control.</p>
                             <h3>Bluetooth</h3>
                             <img src="img/Lab5/toggle.png" class="img-responsive img-centered" alt="">
                             <img src="img/Lab5/send.png" class="img-responsive img-centered" alt=""> 
