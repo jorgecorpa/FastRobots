@@ -749,9 +749,10 @@
                                 </video> 
                             </div>
                             <div style="display: flex; justify-content: center; align-items: center;">
-                                <img src="img/Lab5/PID_ToF.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
-                                <img src="img/Lab5/PID_PWM.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
+                                <img src="img/Lab6/PI.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
+                                <img src="img/Lab6/PI_yaw_PWM.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
                             </div>
+                            <img src="img/Lab6/PImotor.png" class="img-responsive img-centered" alt="">
                             <h4>DMP</h4>
                             <p>There are many problems that can be caused by using a gyroscope-based orientation estimation including accumulated drift, noise sensitivity, and sampling rate sensitivity. There are a few ways to accomodate for these issues like using a Digital Motion Processor(DMP). The DMP onboard the ICM-20948 oricesses raw sensor data and can provide a fused orientation estimate, which can reduce the amount of drift. Normally sensor fusion by using a Kalman filter does the trick because it combines the gyroscope readings with the accelometer and magnetometer to correct the drift. The IMU is very sensitive and has a bias that can make it report false readings even though it is stationary, causing accumulated orientation drift over time. The limitatinos of the IMU is that it hsa a configurable range of 250, 500, 1000, and 2000 degree/s. This is important because if the robot rotates faster than the range it could lead to incorrect PID values. For this lab, I implemented the DMP by using the example shown in the installed library. To start with, the #define ICM_20948_USE_DMP had to be uncommented from the header file in the util folder.  </p>
                             <img src="img/dmp.png" class="img-responsive img-centered" alt="">
