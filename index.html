@@ -739,7 +739,7 @@
                             <p>For the main task of the lab, I used the base from lab 5 as a starting point to implement PID into the system for the IMU. P stands proportional and it is just the error between the target and current angle of the car multiplied by a constant Kp. I stands for Integral, which is the cumulated error over time to accomodate for the steady state error produced by the propoertional term. Then there is the D term which stands for Deferential and it is the rate of change of error multiplied with constant Kd. This accomodates the overshoots caused by PI.</p>
                             <div class = "centered">
                                 <video width="640" height="480" controls>
-                                <source src="./img/Lab5/P.mp4" type="video/mp4">
+                                <source src="./img/Lab6/rotate.mp4" type="video/mp4">
                                 </video> 
                             </div>
                             <div style="display: flex; justify-content: center; align-items: center;">
@@ -758,6 +758,8 @@
                             </div>
                             <h4>DMP</h4>
                             <p>There are many problems that can be caused by using a gyroscope-based orientation estimation including accumulated drift, noise sensitivity, and sampling rate sensitivity. There are a few ways to accomodate for these issues like using a Digital Motion Processor(DMP). The DMP onboard the ICM-20948 oricesses raw sensor data and can provide a fused orientation estimate, which can reduce the amount of drift. Normally sensor fusion by using a Kalman filter does the trick because it combines the gyroscope readings with the accelometer and magnetometer to correct the drift. The IMU is very sensitive and has a bias that can make it report false readings even though it is stationary, causing accumulated orientation drift over time. The limitatinos of the IMU is that it hsa a configurable range of 250, 500, 1000, and 2000 degree/s. This is important because if the robot rotates faster than the range it could lead to incorrect PID values. For this lab, I implemented the DMP by using the example shown in the installed library. To start with, the #define ICM_20948_USE_DMP had to be uncommented from the header file in the util folder.  </p>
+                            <img src="img/dmp.png" class="img-responsive img-centered" alt="">
+                            <img src="img/Lab6/q.png" class="img-responsive img-centered" alt="">
                             <h4>5000 Level</h4>
                             <p>Integrator wind-up occurs when the error is too large for an extended period of time, which causes the integram component to grow too big. This normally causes the robot to overshoot as shown in the video below. This is the same set up as the video above showing the PID controller but without the wind-up protection.</p>
                             <img src="img/Lab5/wind.png" class="img-responsive img-centered" alt="">
