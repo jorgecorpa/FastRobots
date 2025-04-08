@@ -834,7 +834,9 @@
                             <img src="img/Lab7/Ad.png" class="img-responsive img-centered" alt="">
                             Then, the final step was to find the three sigma values to define all the Kalman Filter matricies. C in this case was found to just be [1 0]. The three sigmas represent the noises and uncertainties within the system and is crucial in Kalman filters. sigma 1 is the uncertainty in position, sigma 2 is the uncertainty in velocity, and sigma 3 are the uncertainties in the ToF sensor readings. The image below show the formulas taken from the lecture slides as reference to calculate the respective values. Sigma 3 was taken to be 20 due to the long distance mode error which is 20 in the dark. sigma 1 and 2 were calculated with the estimated values but using the sampling rate of 0.0217 seconds. This gave the values to be 67.91mm and 67.91 mm/s. sigma 1 and sigma 2 square would come out to be 4610.94 and sigma 3 would be 400 as expected.
                             <img src="img/Lab7/example2.png" class="img-responsive img-centered" alt="">
-                            
+                            Now taking the values and applying it in jupyter as shown in the image below. The values that were used were all taken from the tasks above and applied into the code provided in the lecture. The values after going through the filter is very close to the raw data from the very beginning.
+                            <img src="img/Lab7/KF.png" class="img-responsive img-centered" alt="">
+                            <img src="img/Lab7/KF_code.png" class="img-responsive img-centered" alt="">
                             <h4>Discussion</h4>
                             <p>This lab I was able to refreash my memory on how to deal with the IMU like in Lab2. Apart from that, it was quite striaght forward in terms of implementing the PID controller and tuning process of the system. Learning how the DMP works was very interesting as I did not know of its existence.</p>
                             <h3>Reference</h3>
