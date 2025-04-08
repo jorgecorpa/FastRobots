@@ -823,13 +823,9 @@
                                 <img src="img/Lab7/motor.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
                             </div>
                             <img src="img/Lab7/velocity.png" class="img-responsive img-centered" alt="">
-                            By using the equations mentioned in the lectures and on the slides from Lecture 14 as shown below, I was able to find d to be 0.0001880 and m as 0.0002026. To obtain these values, the steady state speed needs to be observed from the velocity graph shown above. I was able to find the average velocity to be 531.66 mm/s. This then gave a value of 2.478 seconds for the 90% rise time by multiplying it by 0.9.
+                            By using the equations mentioned in the lectures and on the slides from Lecture 14 as shown below, I was able to find d to be 0.0001880 and m as 0.0002026. To obtain these values, the steady state speed needs to be observed from the velocity graph shown above. I was able to find the average velocity to be 531.66 mm/s. This then gave a value of 478.5 mm/s for the 90% rise time by multiplying it by 0.9.
                             <img src="img/Lab7/example1.png" class="img-responsive img-centered" alt="">
-                            <div class = "centered">
-                                <video width="640" height="480" controls>
-                                <source src="./img/Lab6/rotate.mp4" type="video/mp4">
-                                </video> 
-                            </div>
+
                             <p>As shown in the video above, the car is able to find the correct angle even when influenced with external force. This was done with the implementation of PI by setting the Derivative to zero since I used the same base as lab 5. For this lab the derivative was not needed as the derivative because taking the derivative of an integrated signal essentially cancels out the effect and does nothing to the actual correction. The yaw estimates come fro mintegrating the gyroscope. To implement the derivative term a low pass filter would be needed to remove the high frequency noise produced by the gyroscope signals. I started with small values of Kp = 0.05 and ended up increasing it to 3 where it found the balance of not overshooting from each adjustment. The minimum PWM output of each motor was set to be -120 or 120 depending on the direction to ensure the small adjustments can be made when needed. For the integral I slowly increased it from 0 to 0.007 where the graph seemed to match the expected smoother curve towards the target without an overshoot and steady state error. Due to the scale, the integral part on the graph is not very obvious but it can be seen that near the end, there is a clear difference between the integral and derivative term moving slightly apart.</p>
                             <div style="display: flex; justify-content: center; align-items: center;">
                                 <img src="img/Lab6/PI.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
