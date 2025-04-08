@@ -814,16 +814,15 @@
                 <div class="row">
                     <div class="col-lg-12">
                             <h2>Lab 7: Kalman Filter </h2>
-                            <p>In Lab 7,similar to lab where we had to design and implement a PID controller for the ToF sensors, this week we did the same for the IMU. The PID controller was the same but some slight changes needed to be made for example the usage of DMP.</p>
+                            <p>In Lab 7, we had to design the Kalman Filter based on the values obtained when the car is driven towards the wall to find the velocity and steady state speed. With the values, the required Matrix could be built with the help of lecture notes.</p>
                             <ul class="list-inline item-details">
-                            <h4>Pre Lab</h4>
-                            <p>For Pre lab, I set up the program to send and receive data through BLE. To do this, I created 4 cases, Toggle_PID, Stop_PID, Set_yaw_Target, and Send_PID_Data to control the robot while it is tetherless. The Toggle_PID starts the robot but before that, a target has to be assigned to the robot or the default value is 0. Once the robot has aligned with the target value, Send_PID_data sends all the stored values across via bluetooth to the computer for visualization purposes. Stop_PID, which is used to stop the car at anytime, was implemented incase the car gets out of control.</p>
-                            <img src="img/Lab6/prelab.png" class="img-responsive img-centered" alt="">
-                            <img src="img/Lab6/prelab2.png" class="img-responsive img-centered" alt=""> 
-                            <p>On the computer end, I modified the notification handler from previous labs and added a few more lists to fill when data is sent with the SEND_PID_LOGS as shown in the image above.</p>
-                            <img src="img/Lab6/send.png" class="img-responsive img-centered" alt=""> 
-                            <h4>PID</h4>
-                            <p>For the main task of the lab, I used the base from lab 5 as a starting point to implement PID into the system for the IMU. P stands proportional and it is just the error between the target and current angle of the car multiplied by a constant Kp. I stands for Integral, which is the cumulated error over time to accomodate for the steady state error produced by the propoertional term. Then there is the D term which stands for Deferential and it is the rate of change of error multiplied with constant Kd. This accomodates the overshoots caused by PI.</p>
+                            <h4>Estimate Drag and momentum</h4>
+                            <p>For the main task of this section, it was to find the values of the drag and momentum to build the A and B matrix. To find the values, a step response of 100 PWM was chosen since this was the value used to test the car in previous labs.</p>
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <img src="img/Lab7/distance_graph.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
+                                <img src="img/Lab7/motor.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
+                            </div>
+                            <img src="img/Lab7/velocity.png" class="img-responsive img-centered" alt="">
                             <div class = "centered">
                                 <video width="640" height="480" controls>
                                 <source src="./img/Lab6/rotate.mp4" type="video/mp4">
@@ -834,6 +833,7 @@
                                 <img src="img/Lab6/PI.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
                                 <img src="img/Lab6/PI_yaw.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
                             </div>
+                            
                             <div style="display: flex; justify-content: center; align-items: center;">
                                 <img src="img/Lab6/PImotor.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
                                 <img src="img/Lab6/PID.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
