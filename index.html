@@ -859,15 +859,19 @@
                 <div class="row">
                     <div class="col-lg-12">
                             <h2>Lab 9: Mapping </h2>
-                            <p>In Lab 9, we had to design the Kalman Filter based on the values obtained when the car is driven towards the wall to find the velocity and steady state speed. With the values, the required Matrix could be built with the help of lecture notes.</p>
+                            <p>In Lab 9, we had to map out the space set up within the lab using the ToFs on the RC car. This required 1 x Fully assembled robot, with Artemis, TOF sensors, and an IMU.</p>
                             <ul class="list-inline item-details">
-                            <h4>Estimate Drag and momentum</h4>
-                            <p>For the main task of this section, it was to find the values of the drag and momentum to build the A and B matrix. To find the values, a step response of 100 PWM was chosen since this was the value used to test the car in previous labs.</p>
+                            <h4>Orientation control</h4>
+                            <p>For the main task of this section, we had to choose a method to map out the area. I chose the second, orientation control, due to the fact that the Lab 6 code could  be reused with just slight modificatinos. The difference was on how to rotate the robot 360 degrees with the same increments. I chose to do 10 degree increments to make the results more reliable and capture more points. The robot would rotate 36 times starting from any initial angle. I found it difficult to always set the car to be at the exact position so instead of letting the car adjust to 0 degrees before starting, it read the initial angle and just spin 360 degrees. </p>
                             <div style="display: flex; justify-content: center; align-items: center;">
-                                <img src="img/Lab7/distance_graph.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
-                                <img src="img/Lab7/motor.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
+                                <img src="img/Lab9/map.jpg" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
+                                <img src="img/Lab9/mapcode.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
                             </div>
-                            <img src="img/Lab7/velocity.png" class="img-responsive img-centered" alt="">
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/Lab9/spin.mp4" type="video/mp4">
+                                </video> 
+                            </div>
                             By using the equations mentioned in the lectures and on the slides from Lecture 14 as shown below, I was able to find d to be 0.0001880 and m as 0.0002026. To obtain these values, the steady state speed needs to be observed from the velocity graph shown above. I was able to find the average velocity to be 531.66 mm/s. This then gave a value of 478.5 mm/s for the 90% rise time by multiplying it by 0.9. The data sampling rate was calculated by taking the average time taken between each ToF value from the recorded data array, which came out to be 0.0217 seconds. It took longer than expected because I had to add some small delays to mitigate for the arrays being filled with random errors.
                             <img src="img/Lab7/example1.png" class="img-responsive img-centered" alt="">
                                 
