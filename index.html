@@ -928,6 +928,57 @@
             </div>
         </div>
     </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal10" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+           <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                            <h2>Lab 10: Grid Localization using Bayes Filter </h2>
+                            <p>In Lab 10, we had to map out the space set up within the lab using the ToFs on the RC car. This required 1 x Fully assembled robot, with Artemis, TOF sensors, and an IMU.</p>
+                            <ul class="list-inline item-details">
+                            <h4>Orientation control</h4>
+                            <p>For the main task of this section, we had to choose a method to map out the area. I chose the second, orientation control, due to the fact that the Lab 6 code could  be reused with just slight modificatinos. The difference was on how to rotate the robot 360 degrees with the same increments. I chose to do 10 degree increments to make the results more reliable and capture more points. The robot would rotate 36 times starting from any initial angle. I found it difficult to always set the car to be at the exact position so instead of letting the car adjust to 0 degrees before starting, it read the initial angle and just spin 360 degrees. </p>
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <img src="img/Lab9/map.jpg" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
+                                <img src="img/Lab9/mapcode.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
+                            </div>
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/Lab9/spin.mp4" type="video/mp4">
+                                </video> 
+                            </div>
+                            <p>I controlled the car via bluetooth commands to initiate the process and take note of the initial angle before starting the turn as shown in the video above. I had to tape the wheels to reduce friction and for better manuvering for the car. The code above shows what the main loop contains, where it iterates through a loop 36 times and the target angle is the initially recorded value + 10 degrees times the iteration. This would then trigger the function pid_orient_control which was fully reused from Lab 6 to execute it. For each iteration, 4 sensor readings are taken from each of the ToFs and the average is taken when recording the data into arrays. Sometimes the ToFs can be very sensitive to light and movement, so I made sure to stop the car before capturing data by using the function readToFSensors. For this lab for simplicity, I chose to only use 1 ToF for the plots and recreation of the map of the lab although data from both ToFs were recorded. Due to the car not able to rotate fully on axis, some of the data points were distorted and became outliers, other just changed how the visualization would turn out to be, for example the box in the middle became a rectangle because the car started sliding a bit when mapping out point (5,-3) </p>   
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <img src="img/Lab9/03.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
+                                <img src="img/Lab9/32.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
+                            </div>
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <img src="img/Lab9/53.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
+                                <img src="img/Lab9/5_3.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
+                            </div>
+                            <p>Here I waws able to spin and record the datas from the 4 different points marked on the ground. One thing I found was that the duct tape on the floor would sometimes get in the way of the robot when spinning as there was some drifting, and would make it get stuck in place which required manual assistance to get it out of the tape. I could have probably tuned the PID a bit better to accommodate for the tape on the floor.Apart from that, the map is starting to take form as shown in the images above on the different coordinates.</p>
+                            <p>To do the transformations, I multipled the distance by cos(theta) to get the x values and by sin(theta) to get the y values. Since they were taken from different positions, there is a displacement value that needs to be added to later combine the 4 scans. I guessed that each tile in the lab was 1x1ft so that would be 304.8mm just to have all values in the same unit. All 4 scans needed some manual adjustments on the orientation of the data to match the expected results, and the initial angles had to be accounted for in the calcualtion. Once everything was validated, I used homogeneous transoformations to convert the polar data into cartesian coordiantes based on the robots pose.</p>
+                            <img src="img/Lab9/trans.png" class="img-responsive img-centered" alt="">
+                            <p>Below shows the results of the reconstructed map from the values recorded with the car. The thick dots represent the points where the robot was placed within the perimeter. As discussed before, there are some points that seem out of bound or some distorted points in the middle of the map. this could be due to sometimes there were other groups testing their cars and it might have been in the way.</p>
+                            <img src="img/Lab9/labmap.png" class="img-responsive img-centered" alt="">
+                            <p>Based on the points on the map, I was able to draw the boundaries of the perimeter. However, the box in the middle is clearly distorted and that is because when (5,-3) was taken, it was slightly stuck because of the tape being too think and worn down. I think by doing 10 degree increments, the boundaries came out a lot more clear than I expected especially around the corners, but it struggled to map the box and the walls in the middle of the map.</p>
+                            <img src="img/Lab9/labmap_line.jpg" class="img-responsive img-centered" alt="">
+                            <h3>Reference</h3>
+                            <p>To complete this weeks lab, I consulted with Aidan Derocher and referred to the websites of Nila Narayan and Mikayla Lahr for some inspirations on how to complete the tasks.</p>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <!-- jQuery -->
