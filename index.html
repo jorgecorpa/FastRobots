@@ -940,7 +940,6 @@
                 <div class="row">
                     <div class="col-lg-12">
                             <h2>Lab 10: Grid Localization using Bayes Filter </h2>
-                            <p>In Lab 10, we had to map out the space set up within the lab using the ToFs on the RC car. This required 1 x Fully assembled robot, with Artemis, TOF sensors, and an IMU.</p>
                             <ul class="list-inline item-details">
                             <h4>Bayes Filter</h4>
                             <h4>Compute Control</h4>
@@ -959,7 +958,7 @@
                             <p>Then the last step is the updates step, which uses the sensor measurements to refine the robot's belief. It starts by using the predicted belief from the motion model, and for each pose, it multiples it by the likelihood of observing the actual sensor measurements at the given pose. This will make the poses that have the prediction and observation agree stand out and weigh down the poses with poor alignment. By then normalizing the grid, the result is a good distribution that combines both motion and perception which allows for better localization.</p>
                             <img src="img/Lab10/update.png" class="img-responsive img-centered" alt="">
                             <h4>Simulation</h4>
-                            <p>As shown in the image below, the red line represents the odometry-based trajectory, green line shows the ground truth trajectory, and the blue line shows the belief trjectory estimated by the bayes filter. The odom trajectory drifts significantly from the true path is most likely due to the cumulative error in dead reckoning. The green and blue line are closely aligned and the belief trajectory is able to correct teh drift from the odometry line.</p>
+                            <p>As shown in the image below, the red line represents the odometry-based trajectory, green line shows the ground truth trajectory, and the blue line shows the belief trjectory estimated by the bayes filter. The odom trajectory drifts significantly from the true path is most likely due to the cumulative error in dead reckoning. The green and blue line are closely aligned and the belief trajectory is able to correct teh drift from the odometry line. The positional error remained low, while angular errors occasionally spiked. Over time, the filter maintained good convergence, especially during straightline motion where the odom noise was not impactful.</p>
                             <img src="img/Lab10/simu.png" class="img-responsive img-centered" alt="">
                             <div class = "centered">
                                 <video width="640" height="480" controls>
