@@ -942,7 +942,13 @@
                             <h2>Lab 10: Grid Localization using Bayes Filter </h2>
                             <p>In Lab 10, we had to map out the space set up within the lab using the ToFs on the RC car. This required 1 x Fully assembled robot, with Artemis, TOF sensors, and an IMU.</p>
                             <ul class="list-inline item-details">
-                            <h4>Orientation control</h4>
+                            <h4>Bayes Filter</h4>
+                            <h4>Compute Control</h4>
+                            <h4>Odometry Motion Model</h4>
+                            <h4>Prediction step</h4>
+                            <h4>Sensor Model</h4>
+                            <h4>Update Step</h4>
+                            <h4>Simulation</h4>
                             <p>For the main task of this section, we had to choose a method to map out the area. I chose the second, orientation control, due to the fact that the Lab 6 code could  be reused with just slight modificatinos. The difference was on how to rotate the robot 360 degrees with the same increments. I chose to do 10 degree increments to make the results more reliable and capture more points. The robot would rotate 36 times starting from any initial angle. I found it difficult to always set the car to be at the exact position so instead of letting the car adjust to 0 degrees before starting, it read the initial angle and just spin 360 degrees. </p>
                             <div style="display: flex; justify-content: center; align-items: center;">
                                 <img src="img/Lab9/map.jpg" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
