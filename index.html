@@ -993,7 +993,9 @@
                             <img src="img/Lab11/sim.png" class="img-responsive img-centered" alt="">
                             <p>The performan_observation_loop function serves as the bridge between the real robot sensors and the localication algorithm. Through BLE notifications and synchronously receives sensor data sent by the robot. This is then stored into a structured array until it is complete. Once the car spins 360 degrees, it converts the raw measurments from mm to m before it can be fed into the bayes filter update.</p>
                             <img src="img/Lab11/perform.png" class="img-responsive img-centered" alt="">
+                            <p>In the arduino, I just used the tested code from Lab9 that was designed to map out the room. To make it easier, I combined the sending of the data with the sending data case that I had in Lab9. Like this, I would not need to call two CMD commands. Another difference is instead of having 10 degree increments, this lab I increaed the degrees from 10 to 20 resulting in 18 measurements.</p>
                             <img src="img/Lab11/arduino.png" class="img-responsive img-centered" alt="">   
+                            <p>For (0,3), </p>
                             <div style="display: flex; justify-content: center; align-items: center;">
                                 <img src="img/Lab11/0_3.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
                                 <img src="img/Lab11/0_3_graph.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
