@@ -986,31 +986,26 @@
            <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                            <h2>Lab 11: Grid Localization using Bayes Filter </h2>
+                            <h2>Lab 11: Localization on the real robot </h2>
                             <ul class="list-inline item-details">
-                            <h4>Bayes Filter</h4>
-                            <h4>Compute Control</h4>
-                            <p>This function creaates the robot's motion by breaking it down into three componentes, the initial rotation to face the direction of the movement, the forward translation, and another rotation to align with the new orientation. This is basically how differential drive robots tend to move. By using the previous and current pose of the robot, we can extract with motion as a tuple of relative action such as turning and translation. </p>
-                            <img src="img/Lab10/comp.png" class="img-responsive img-centered" alt="">
-                            <h4>Odometry Motion Model</h4>
-                            <p>This function evaluates the probability p(x'|x, u) of moving between the two poses. It does it by comparing what the robot actually did, which comes from the odometry value, to the hypothetical movement between the two points. The closer both are, the higher the probability which serves as a weight in the prediction step.</p>
-                            <img src="img/Lab10/odom.png" class="img-responsive img-centered" alt="">
-                            <h4>Prediction step</h4>
-                            <p>This is where the robot uses its belif about where it might be after executing the motion. This is done by using the previous poses and simulate how likely it is to reach every possible new pose. These probabilities are then formed into a new intermediate belief. Here since it needs to run through the whole grid, one way to speed it up is by adding the if statement which skips the unlikely states that are near zero in values. The set threshold here is 0.0001.</p>
-                            <img src="img/Lab10/pred.png" class="img-responsive img-centered" alt="">
-                            <h4>Sensor Model</h4>
-                            <p>The sensor model quantifies how well the robot's currenert range measurements match what it would expect to see from a particular pose. It calcualtes a likelihood based on how close the measured distance is to the map's expected value. By assuming that the beams are independent, these likelihoods are multiplied to produce an overall probability of a pose. This basically calculates how confident the robot is about the location based on the sensor data provided.</p>
-                            <img src="img/Lab10/sensor.png" class="img-responsive img-centered" alt="">
-                            <h4>Update Step</h4>
-                            <p>Then the last step is the updates step, which uses the sensor measurements to refine the robot's belief. It starts by using the predicted belief from the motion model, and for each pose, it multiples it by the likelihood of observing the actual sensor measurements at the given pose. This will make the poses that have the prediction and observation agree stand out and weigh down the poses with poor alignment. By then normalizing the grid, the result is a good distribution that combines both motion and perception which allows for better localization.</p>
-                            <img src="img/Lab10/update.png" class="img-responsive img-centered" alt="">
                             <h4>Simulation</h4>
-                            <p>As shown in the image below, the red line represents the odometry-based trajectory, green line shows the ground truth trajectory, and the blue line shows the belief trjectory estimated by the bayes filter. The odom trajectory drifts significantly from the true path is most likely due to the cumulative error in dead reckoning. The green and blue line are closely aligned and the belief trajectory is able to correct teh drift from the odometry line. The positional error remained low, while angular errors occasionally spiked. Over time, the filter maintained good convergence, especially during straightline motion where the odom noise was not impactful.</p>
-                            <img src="img/Lab10/simu.png" class="img-responsive img-centered" alt="">
-                            <div class = "centered">
-                                <video width="640" height="480" controls>
-                                <source src="./img/Lab10/Simulation.mp4" type="video/mp4">
-                                </video> 
+                            <p>First, I ran the lab 11 simulation and compared with the data obtained in lab 10 and it seems pretty much the same. This code was already provided.</p>
+                            <img src="img/Lab11/sim.png" class="img-responsive img-centered" alt="">
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <img src="img/Lab11/0_3.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
+                                <img src="img/Lab11/0_3_graph.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
+                            </div>
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <img src="img/Lab11/53.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
+                                <img src="img/Lab11/53_graph.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
+                            </div>
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <img src="img/Lab11/5_3.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
+                                <img src="img/Lab11/5_3_graph.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
+                            </div>
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <img src="img/Lab11/_3_2_new.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
+                                <img src="img/Lab11/_3_2_graph.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
                             </div>
                             <h3>Reference</h3>
                             <p>To complete this weeks lab, I consulted with Aidan Derocher and referred to the websites of Nila Narayan and Mikayla Lahr for some inspirations on how to complete the tasks.</p>
