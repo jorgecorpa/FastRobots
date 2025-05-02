@@ -891,8 +891,10 @@
                             <h2>Lab 8: STUNT! </h2>
                             <ul class="list-inline item-details">
                             <h4>Code</h4>
-                            <p>For this lab, I completed it by using open loop control so no PID or Kalman Filter were implemented. Initially, the code was designed for the car to just move forward at top speed and instantly change to backwards to do the flip, but I figured that was not consistent enough to achieve a slip while facing the starting line. Therefore, I decied to add a very short stop after the backwards command for the robot to land before drving it backwards. This was done because when the car is flipping and the wheels are moving, it can easily make the car deviate and change direction. With the stop in place, the robot can fully land before moving backwards. I played around with the stop and backward timings to try and get consistant flips.</p>
+                            <p>For this lab, I completed it by using open loop control so no PID or Kalman Filter were implemented. Initially, the code was designed for the car to just move forward at top speed and instantly change to backwards to do the flip, but I figured that was not consistent enough to achieve a slip while facing the starting line. Therefore, I decied to add a very short stop after the backwards command for the robot to land before drving it backwards. This was done because when the car is flipping and the wheels are moving, it can easily make the car deviate and change direction. With the stop in place, the robot can fully land before moving backwards. I played around with the stop and backward timings to try and get consistant flips. There were some modifications that were done to the car before it could achieve consistant flipping including taping the batteries down and adjusting the placements to be at the front of the car. This allowed the weight to be concentrated near the front for a better flip. Bearings that were found in the lab were stored in the battery compartment to add weight onto the robot. Another problem was that all the wires would get into the way once the car flipped so I had to resolder some of the componenets to have better wire management and duct tape it down to the car.</p>
+                            <img src="img/Lab8/code.png" class="img-responsive img-centered" alt="">
                             <h4>Flip 1</h4>
+                            <p>In the first flip, the stop time was not a lot so it is visible that the car changed directions mid air but it was able to make it back to the start point.</p>
                             <img src="img/Lab8/first graph.png" class="img-responsive img-centered" alt="">
                             <div class = "centered">
                                 <video width="640" height="480" controls>
@@ -900,6 +902,7 @@
                                 </video> 
                             </div>
                             <h4>Flip 2</h4>
+                            <p>In the second flip, the stop time was tuned up slightly to allow it time to settle down before moving but the issue here was that the two motors stop at different times so near the end of the forward motion it can be observed that the car changed diretions slightly while mid air because this was when the commands were set to go backwards. </p>
                             <img src="img/Lab8/second.png" class="img-responsive img-centered" alt="">
                             <div class = "centered">
                                 <video width="640" height="480" controls>
@@ -907,6 +910,7 @@
                                 </video> 
                             </div>
                             <h4>Flip 3</h4>
+                            <p>In the final flip, I increased the stop time slightly more for a more stable landing before moving backwards to the start line. There was a battery issue that would occur as the car was ran more and more times so it was a bit differnet every single time. Not only was the battery a factor that I could not accomodate for unless I charged the batteries but the amount of dust on the floor would also affect the traction capability. This is when I decided to wipe the wheels clean before evey single run to keep it consistant.</p>
                             <img src="img/Lab8/third.png" class="img-responsive img-centered" alt="">
                             <div class = "centered">
                                 <video width="640" height="480" controls>
@@ -914,7 +918,6 @@
                                 </video> 
                             </div>
                             <h4>Blooper</h4> 
-                            <img src="img/Lab8/third.png" class="img-responsive img-centered" alt="">
                             <div class = "centered">
                                 <video width="640" height="480" controls>
                                 <source src="./img/Lab8/blooper.mp4" type="video/mp4">
