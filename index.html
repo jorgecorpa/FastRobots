@@ -891,15 +891,37 @@
                             <h2>Lab 8: STUNT! </h2>
                             <ul class="list-inline item-details">
                             <h4>Code</h4>
-                            <p></p>
+                            <p>For this lab, I completed it by using open loop control so no PID or Kalman Filter were implemented. Initially, the code was designed for the car to just move forward at top speed and instantly change to backwards to do the flip, but I figured that was not consistent enough to achieve a slip while facing the starting line. Therefore, I decied to add a very short stop after the backwards command for the robot to land before drving it backwards. This was done because when the car is flipping and the wheels are moving, it can easily make the car deviate and change direction. With the stop in place, the robot can fully land before moving backwards. I played around with the stop and backward timings to try and get consistant flips.</p>
                             <h4>Flip 1</h4>
                             <img src="img/Lab8/first graph.png" class="img-responsive img-centered" alt="">
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/Lab8/first.mp4" type="video/mp4">
+                                </video> 
+                            </div>
                             <h4>Flip 2</h4>
                             <img src="img/Lab8/second.png" class="img-responsive img-centered" alt="">
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/Lab8/second.mp4" type="video/mp4">
+                                </video> 
+                            </div>
                             <h4>Flip 3</h4>
                             <img src="img/Lab8/third.png" class="img-responsive img-centered" alt="">
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/Lab8/third.mp4" type="video/mp4">
+                                </video> 
+                            </div>
+                            <h4>Blooper</h4> 
+                            <img src="img/Lab8/third.png" class="img-responsive img-centered" alt="">
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/Lab8/blooper.mp4" type="video/mp4">
+                                </video> 
+                            </div>
                             <h3>Reference</h3>
-                            <p>To complete this weeks lab, I consulted with Aidan Derocher and referred to the websites of Nila Narayan and Mikayla Lahr for some inspirations on how to complete the tasks.</p>
+                            <p>To complete this weeks lab, I consulted with Aidan Derocher and Henry Calderon and referred to the websites of Nila Narayan and Mikayla Lahr for some inspirations on how to complete the tasks.</p>
                             </ul>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                         </div>
