@@ -1082,6 +1082,57 @@
             </div>
         </div>
     </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal12" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+           <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                            <h2>Lab 11: Localization on the real robot </h2>
+                            <ul class="list-inline item-details">
+                            <h4>Simulation</h4>
+                            <p>First, I ran the lab 11 simulation and compared with the data obtained in lab 10 and it seems pretty much the same. This code was already provided.</p>
+                            <img src="img/Lab11/sim.png" class="img-responsive img-centered" alt="">
+                            <p>The performan_observation_loop function serves as the bridge between the real robot sensors and the localication algorithm. Through BLE notifications and synchronously receives sensor data sent by the robot. This is then stored into a structured array until it is complete. Once the car spins 360 degrees, it converts the raw measurments from mm to m before it can be fed into the bayes filter update.</p>
+                            <img src="img/Lab11/perform.png" class="img-responsive img-centered" alt="">
+                            <p>In the arduino, I just used the tested code from Lab9 that was designed to map out the room. To make it easier, I combined the sending of the data with the sending data case that I had in Lab9. Like this, I would not need to call two CMD commands. Another difference is instead of having 10 degree increments, this lab I increaed the degrees from 10 to 20 resulting in 18 measurements.</p>
+                            <img src="img/Lab11/arduino1.png" class="img-responsive img-centered" alt="">   
+                            <p>For (0,3), the estimated belief is slightly north of the actual ground truth, but within a reasonable margin. This small offset may be caused by minor noise in the ToF readings. Overall the data was very accurate for point (0,3)</p>
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <img src="img/Lab11/03.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
+                                <img src="img/Lab11/0_3_graph.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
+                            </div>
+                            <p>For (5,3), the robot belief was close to teh ground truth, both spatailly and in orientation with about 30 degrees. This corner produced relatively accurate and consistant results.</p>
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <img src="img/Lab11/53.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
+                                <img src="img/Lab11/53_graph.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
+                            </div>
+                            <p>For (5,-3), it was a tricky one even when recording data during Lab9. Here it took multiple tries to gather promising results although the graphs still show that the belief is off by about a ft away. This also had an angle of 30 degrees which is still the same as the other points.</p>
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <img src="img/Lab11/5_3.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
+                                <img src="img/Lab11/5_3_graph.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
+                            </div>
+                            <p>For (-3,-2), the robot's belief is again quite close to the actual ground truth, but slightly north. All these points seem acurate enoughwith the first point being the most accurate time.</p>
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <img src="img/Lab11/3_2_new.png" class="img-responsive img-centered" alt="" style="max-width: 45%; margin-right: 10px;">
+                                <img src="img/Lab11/3_2_graph.png" class="img-responsive img-centered" alt="" style="max-width: 45%;">
+                            </div>
+                            <p>This small discrepancy is most likely due to imperfect manual placement or rotation of the robot rather than a fault in the algorithm. When the robot performs rotational scanning, friction inconsistencies between the wheels and the surface can cause it to slip, especially during in-place turns. This slippage may cause the robot to physically drift from its original placement, leading to a slight mismatch between the intended and actual scan origin. Consequently, the observed offset in belief is an expected result caused by physical movement constraints.</p>
+                            <h3>Reference</h3>
+                            <p>To complete this weeks lab, I referred to the websites of Nila Narayan and Mikayla Lahr for some inspirations on how to complete the tasks.</p>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <!-- jQuery -->
