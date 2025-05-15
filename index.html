@@ -1096,6 +1096,11 @@
                             <h2>Lab 11: Localization on the real robot </h2>
                             <ul class="list-inline item-details">
                             <h4>Simulation</h4>
+                            <div class = "centered">
+                                <video width="640" height="480" controls>
+                                <source src="./img/Lab12/Lab12.mp4" type="video/mp4">
+                                </video> 
+                            </div>
                             <p>First, I ran the lab 11 simulation and compared with the data obtained in lab 10 and it seems pretty much the same. This code was already provided.</p>
                             <img src="img/Lab11/sim.png" class="img-responsive img-centered" alt="">
                             <p>The performan_observation_loop function serves as the bridge between the real robot sensors and the localication algorithm. Through BLE notifications and synchronously receives sensor data sent by the robot. This is then stored into a structured array until it is complete. Once the car spins 360 degrees, it converts the raw measurments from mm to m before it can be fed into the bayes filter update.</p>
